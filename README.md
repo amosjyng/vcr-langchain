@@ -5,7 +5,7 @@ Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [langchain](htt
 ## Quickstart
 
 ```bash
-pip install vcr_langchain
+pip install vcr-langchain
 ```
 
 Use it with pytest:
