@@ -1,6 +1,6 @@
 # VCR langchain
 
-Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [langchain](https://github.com/hwchase17/langchain) so that you can cache all your expensive LLM interactions in tests.
+Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [langchain](https://github.com/hwchase17/langchain) so that you can record and replay all your expensive LLM interactions for tests.
 
 ## Quickstart
 
