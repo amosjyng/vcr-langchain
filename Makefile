@@ -10,5 +10,6 @@ lint:
 	poetry run isort . --check
 	poetry run flake8 .
 
+test: tests
 tests:
 	poetry run pytest
