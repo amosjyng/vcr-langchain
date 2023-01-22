@@ -3,7 +3,6 @@ from typing import List, Optional
 
 from langchain.llms.base import LLM
 
-import vcr_langchain
 from vcr_langchain import VCR, mode
 
 vcr = VCR(path_transformer=VCR.ensure_suffix(".yaml"))
