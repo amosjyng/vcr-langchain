@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "vcr-langchain"
-version = "0.0.1"
+version = "0.0.2"
 description = "LLM test interactions recorder for langchain, based on vcrpy"
 authors = ["Amos Jun-yeung Ng <me@amos.ng>"]
 readme = "README.md"
 packages = [{include = "vcr_langchain"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.8.1,<4.0"
 vcrpy = "^4.2.1"
 langchain = "^0.0.66"
 
