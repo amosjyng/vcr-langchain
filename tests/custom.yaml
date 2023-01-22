@@ -1,9 +1,9 @@
 interactions:
 - request:
     llm_string: '[(''_type'', ''MockLLM for testing''), (''stop'', None)]'
-    prompt: Tell me a surreal joke
+    prompt: Tell me a real joke
   response:
   - !!python/object/new:langchain.schema.Generation
-    - Wow, you really think you can ask me to 'Tell me a surreal joke'?
+    - Wow, you really think you can ask me to 'Tell me a real joke'?
     - null
 version: 1

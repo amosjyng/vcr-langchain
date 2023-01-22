@@ -3,10 +3,10 @@ from typing import List, Optional
 
 from langchain.llms.base import LLM
 
-import vcr_langchain as vcr
+import vcr_langchain
 from vcr_langchain import VCR, mode
 
-my_vcr = VCR(path_transformer=VCR.ensure_suffix(".yaml"))
+vcr = VCR(path_transformer=VCR.ensure_suffix(".yaml"))
 
 
 class MockLLM(LLM):
@@ -26,7 +26,7 @@ def test_use_as_with_context():
 
     with vcr.use_cassette(cassette_path):
         llm = MockLLM()
-        llm("Tell me a surreal joke")
+        llm("Tell me a silly joke")
 
     try:
         assert os.path.isfile(cassette_path)
@@ -43,4 +43,4 @@ def test_use_as_test_decorator():
 @vcr.use_cassette("tests/custom.yaml", record_mode=mode.NONE)
 def test_use_custom_file():
     llm = MockLLM()
-    llm("Tell me a surreal joke")
+    llm("Tell me a real joke")
