@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "vcr-langchain"
+version = "0.0.1"
+description = ""
+authors = ["Amos Jun-yeung Ng <me@amos.ng>"]
+readme = "README.md"
+packages = [{include = "vcr_langchain"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+vcrpy = "^4.2.1"
+langchain = "^0.0.66"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.1"
+mypy = "^0.991"
+black = "^22.12.0"
+isort = "^5.11.4"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
