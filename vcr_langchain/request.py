@@ -14,7 +14,8 @@ class Request:
 
     def _to_dict(self):
         return {
-            "prompt": self.prompt,
+            # str the prompt up in case it's a fancy subclass of str -- e.g. Fvalues
+            "prompt": str(self.prompt),
             "llm_string": self.llm_string,
         }
 
