@@ -6,10 +6,10 @@ from .cache import VcrCache
 
 class CachePatch:
     def __init__(self, cassette):
-        self.cache = VcrCache(cassette)
+        self.cassette = cassette
 
     def __enter__(self):
-        langchain.llm_cache = self.cache
+        langchain.llm_cache = VcrCache(self.cassette)
 
     def __exit__(self, *args):
         langchain.llm_cache = None
