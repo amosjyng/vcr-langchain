@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "vcr-langchain"
 version = "0.0.2"
-description = "LLM test interactions recorder for langchain, based on vcrpy"
+description = "Record and replay LLM interactions for langchain"
 authors = ["Amos Jun-yeung Ng <me@amos.ng>"]
 readme = "README.md"
 packages = [{include = "vcr_langchain"}]
