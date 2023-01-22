@@ -28,6 +28,10 @@ The next time you run it:
 
 For more examples, see [the usages test file](tests/test_usage.py).
 
+### Why not just use VCR.py directly?
+
+This offers higher-level, more human-readable recordings for inspection. Additionally, I plan to support recording of utilities as well, which includes non-network requests such as command executions inside Bash or the Python REPL.
+
 ## Documentation
 
 For more information on how VCR works and what other options there are, please see the [VCR docs](https://vcrpy.readthedocs.io/en/latest/index.html).
