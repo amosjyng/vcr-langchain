@@ -13,3 +13,5 @@ lint:
 test: tests
 tests:
 	poetry run pytest
+
+all: test format lint
