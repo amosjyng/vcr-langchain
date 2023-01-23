@@ -1,4 +1,4 @@
-# VCR langchain
+# VCR LangChain
 
 Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [LangChain](https://github.com/hwchase17/langchain) so that you can record and replay all your expensive LLM interactions for tests.
 
