@@ -1,3 +1,4 @@
+from copy import deepcopy
 from dataclasses import dataclass
 
 from vcr.request import Request as OgRequest
@@ -5,19 +6,20 @@ from vcr.request import Request as OgRequest
 
 @dataclass
 class Request:
-    """A request to an LLM"""
+    """A request to an LLM or a tool"""
 
-    # Prompt sent to the LLM
-    prompt: str
-    # LLM descriptor
-    llm_string: str
+    def __init__(self, **kwargs) -> None:
+        self.kwargs = kwargs
+
+    def args(self):
+        return sorted(self.kwargs.keys())
 
     def _to_dict(self):
-        return {
+        args = deepcopy(self.kwargs)
+        if "prompt" in args:
             # str the prompt up in case it's a fancy subclass of str -- e.g. Fvalues
-            "prompt": str(self.prompt),
-            "llm_string": self.llm_string,
-        }
+            args["prompt"] = str(self.kwargs["prompt"])
+        return args
 
     @classmethod
     def _from_dict(cls, dct):

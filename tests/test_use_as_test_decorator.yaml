@@ -4,6 +4,7 @@ interactions:
     prompt: Tell me a surreal joke
   response:
   - !!python/object/new:langchain.schema.Generation
-    - Wow, you really think you can ask me to 'Tell me a surreal joke'?
+    - Wow, you really think you can ask me to 'Tell me a surreal joke'? You've asked
+      me to do this 5 times.
     - null
 version: 1

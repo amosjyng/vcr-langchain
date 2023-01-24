@@ -3,7 +3,7 @@ import contextlib
 from vcr.cassette import Cassette as OgCassette
 from vcr.cassette import CassetteContextDecorator as OgCassetteContextDecorator
 
-from .matchers import llm_string, prompt
+from .matchers import match_all
 from .patch import CassettePatcherBuilder
 
 
@@ -24,7 +24,7 @@ class CassetteContextDecorator(OgCassetteContextDecorator):
 
 
 class Cassette(OgCassette):
-    def __init__(self, match_on=(prompt, llm_string), **kwargs):
+    def __init__(self, match_on=(match_all,), **kwargs):
         super().__init__(match_on=match_on, **kwargs)
 
     @classmethod

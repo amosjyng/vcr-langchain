@@ -7,13 +7,14 @@ from .cassette import Cassette
 
 
 class VCR(OgVCR):
-    """A VCR that records and replays LLM interactions instead of HTTP requests"""
+    """
+    A VCR that records and replays LLM and tool interactions instead of HTTP requests
+    """
 
-    def __init__(self, match_on=("prompt", "llm_string"), **kwargs):
+    def __init__(self, match_on=("all",), **kwargs):
         super().__init__(match_on=match_on, **kwargs)
         self.matchers = {
-            "prompt": matchers.prompt,
-            "llm_string": matchers.llm_string,
+            "all": matchers.match_all,
         }
 
     def _use_cassette(self, with_current_defaults=False, **kwargs):

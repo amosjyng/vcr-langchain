@@ -4,6 +4,7 @@ interactions:
     prompt: Tell me a real joke
   response:
   - !!python/object/new:langchain.schema.Generation
-    - Wow, you really think you can ask me to 'Tell me a real joke'?
+    - Wow, you really think you can ask me to 'Tell me a real joke'? You've asked
+      me to do this 6 times.
     - null
 version: 1

@@ -7,16 +7,17 @@ from vcr_langchain import matchers, request
 # the dict contains requests with corresponding to its key difference
 # with 'base' request.
 REQUESTS = {
-    "base": request.Request("Please respond", "FakeLLM"),
-    "prompt": request.Request("Please don't respond", "FakeLLM"),
-    "llm_string": request.Request("Please respond", "RealLLM"),
+    "base": request.Request(prompt="Please respond", llm_string="FakeLLM"),
+    "prompt": request.Request(prompt="Please don't respond", llm_string="FakeLLM"),
+    "llm_string": request.Request(prompt="Please respond", llm_string="RealLLM"),
+    "exact_base_copy": request.Request(prompt="Please respond", llm_string="FakeLLM"),
 }
 
 
-def assert_matcher(matcher_name):
-    matcher = getattr(matchers, matcher_name)
+def assert_matcher(different_field):
+    matcher = matchers.match_all
     for k1, k2 in itertools.permutations(REQUESTS, 2):
-        expecting_assertion_error = matcher_name in {k1, k2}
+        expecting_assertion_error = "base" not in k1 or "base" not in k2
         if expecting_assertion_error:
             with pytest.raises(AssertionError):
                 matcher(REQUESTS[k1], REQUESTS[k2])
