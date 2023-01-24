@@ -1,6 +1,6 @@
 # VCR LangChain
 
-Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [LangChain](https://github.com/hwchase17/langchain) so that you can record and replay all your expensive LLM interactions for tests.
+Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [LangChain](https://github.com/hwchase17/langchain). Refactor with confidence as you can record and replay all your LLM logic in a contained environment, free from any and all side effects.
 
 ## Quickstart
 
@@ -24,19 +24,23 @@ The next time you run it:
 
 - the output is now deterministic
 - it executes a lot faster by replaying from cache
-- you no longer need to have the real OpenAI API key defined
+- no command executions or other side effects actually happen
+- you no longer need to have real API keys defined
 
 For more examples, see [the usages test file](tests/test_usage.py).
 
 ### Why not just use VCR.py directly?
 
-This offers higher-level, more human-readable recordings for inspection. Additionally, I plan to support recording of utilities as well, which includes non-network requests such as command executions inside Bash or the Python REPL.
+- This offers higher-level, more human-readable recordings for inspection
+- This supports recordings of langchain tool interactions as well, which includes non-network requests such as command executions inside Bash (coming soon) or the Python REPL. What if you wanted to make sure that your agent supports file deletion, without actually letting it delete anything?
 
 ## Documentation
 
 For more information on how VCR works and what other options there are, please see the [VCR docs](https://vcrpy.readthedocs.io/en/latest/index.html).
 
 For more information on how to use langchain, please see the [langchain docs](https://langchain.readthedocs.io/en/latest/).
+
+**Please note that there is a lot of langchain functionality that I haven't gotten around to hijacking for recording.** If there's anything you need to record in a cassette, please open a PR or issue.
 
 ## Projects that use this
 
