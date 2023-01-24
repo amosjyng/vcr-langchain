@@ -34,6 +34,10 @@ For more examples, see [the usages test file](tests/test_usage.py).
 - This offers higher-level, more human-readable recordings for inspection
 - This supports recordings of langchain tool interactions as well, which includes non-network requests such as command executions inside Bash (coming soon) or the Python REPL. What if you wanted to make sure that your agent supports file deletion, without actually letting it delete anything?
 
+### Pitfalls
+
+Note that tools, if initialized outside of the `vcr_langchain` decorator, will not have recording capabilities patched in. This is true even if an agent using those tools is initialized within the decorator.
+
 ## Documentation
 
 For more information on how VCR works and what other options there are, please see the [VCR docs](https://vcrpy.readthedocs.io/en/latest/index.html).
