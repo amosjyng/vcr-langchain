@@ -1,6 +1,6 @@
 # VCR LangChain
 
-Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [LangChain](https://github.com/hwchase17/langchain). Refactor with confidence as you can record and replay all your LLM logic in a contained environment, free from any and all side effects.
+Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [LangChain](https://github.com/hwchase17/langchain). Refactor with confidence as you record and replay all your LLM logic in a contained environment, free from any and all side effects.
 
 ## Quickstart
 
@@ -25,7 +25,7 @@ The next time you run it:
 - the output is now deterministic
 - it executes a lot faster by replaying from cache
 - no command executions or other side effects actually happen
-- you no longer need to have real API keys defined
+- you no longer need to have real API keys defined for test execution in CI environments
 
 For more examples, see [the usages test file](tests/test_usage.py).
 
