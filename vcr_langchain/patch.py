@@ -1,6 +1,7 @@
 import logging
 
 import langchain
+from langchain.python import PythonREPL
 from langchain.serpapi import SerpAPIWrapper
 from vcr.patch import CassettePatcherBuilder as OgCassettePatcherBuilder
 
@@ -73,9 +74,21 @@ class SerpPatch(GenericPatch):
         return run
 
 
+class PythonREPLPatch(GenericPatch):
+    def __init__(self, cassette):
+        super().__init__(cassette, PythonREPL, "run")
+
+    def get_same_signature_override(self):
+        def run(og_self, command: str) -> str:
+            return self.generic_override(og_self, command=command)
+
+        return run
+
+
 class CassettePatcherBuilder(OgCassettePatcherBuilder):
     def build(self):
         return (
             CachePatch(self._cassette),
             SerpPatch(self._cassette),
+            PythonREPLPatch(self._cassette),
         )

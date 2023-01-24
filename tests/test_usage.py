@@ -1,10 +1,9 @@
-import os
 from typing import List, Optional
 
 import langchain
 from langchain.llms.base import LLM
 
-from tests import vcr
+from tests import TemporaryCassettePath, vcr
 from vcr_langchain import mode
 
 
@@ -26,24 +25,6 @@ class MockLLM(LLM):
 # pydantic requires _ in front of class variables, or else they won't exist
 # make sure we set this successfully before continuing on with the rest of the test
 assert MockLLM._NUM_CALLS == 0
-
-
-class TemporaryCassettePath:
-    def __init__(self, cassette_path):
-        self.cassette_path = cassette_path
-
-    def __enter__(self):
-        if os.path.isfile(self.cassette_path):
-            os.remove(self.cassette_path)
-            assert not os.path.isfile(self.cassette_path)
-
-    def __exit__(self, *_):
-        try:
-            # check that cassette was successfully created
-            assert os.path.isfile(self.cassette_path)
-        finally:
-            # remove it for future testing
-            os.remove(self.cassette_path)
 
 
 def test_use_as_with_context():
