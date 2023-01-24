@@ -37,3 +37,7 @@ This offers higher-level, more human-readable recordings for inspection. Additio
 For more information on how VCR works and what other options there are, please see the [VCR docs](https://vcrpy.readthedocs.io/en/latest/index.html).
 
 For more information on how to use langchain, please see the [langchain docs](https://langchain.readthedocs.io/en/latest/).
+
+## Projects that use this
+
+- [LangChain Visualizer](https://github.com/amosjyng/langchain-visualizer)
