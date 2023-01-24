@@ -4,12 +4,8 @@ from typing import List, Optional
 import langchain
 from langchain.llms.base import LLM
 
-from vcr_langchain import VCR, mode
-
-vcr = VCR(
-    path_transformer=VCR.ensure_suffix(".yaml"),
-    record_mode=mode.ONCE,  # by default, make sure nothing is recorded
-)
+from tests import vcr
+from vcr_langchain import mode
 
 
 class MockLLM(LLM):
@@ -67,7 +63,7 @@ def test_no_cache_outside_of_context():
     cassette_path = "tests/temp.yaml"
     assert langchain.llm_cache is None
     with TemporaryCassettePath(cassette_path):
-        with vcr.use_cassette(cassette_path):
+        with vcr.use_cassette(cassette_path, record_mode=mode.ONCE):
             assert langchain.llm_cache is not None
             llm = MockLLM()
             llm("Tell me a temporary joke")
