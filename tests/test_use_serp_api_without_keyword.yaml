@@ -1,0 +1,6 @@
+interactions:
+- request:
+    query: how big is the sun
+    tool: SerpAPIWrapper
+  response: 432,690 mi
+version: 1

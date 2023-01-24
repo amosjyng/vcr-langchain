@@ -35,8 +35,10 @@ class GenericPatch:
         self.cls = cls
         self.fn_name = fn_name
         self.og_fn = getattr(cls, fn_name)
+        self.generic_override = self.get_generic_override_fn()
+        self.same_signature_override = self.get_same_signature_override()
 
-    def get_override_fn(self):
+    def get_generic_override_fn(self):
         def fn_override(og_self, **kwargs):
             request = Request(tool=self.cls.__name__, **kwargs)
             cached_response = self.cassette.lookup(request)
@@ -49,13 +51,12 @@ class GenericPatch:
 
         return fn_override
 
+    def get_same_signature_override(self):
+        """Override this function in the inherited class to convert args to kwargs"""
+        return self.get_generic_override_fn()
+
     def __enter__(self):
-        override = (
-            getattr(self, self.fn_name)
-            if hasattr(self, self.fn_name)
-            else self.get_override_fn()
-        )
-        setattr(self.cls, self.fn_name, override)
+        setattr(self.cls, self.fn_name, self.same_signature_override)
 
     def __exit__(self, *args):
         setattr(self.cls, self.fn_name, self.og_fn)
@@ -64,6 +65,12 @@ class GenericPatch:
 class SerpPatch(GenericPatch):
     def __init__(self, cassette):
         super().__init__(cassette, SerpAPIWrapper, "run")
+
+    def get_same_signature_override(self):
+        def run(og_self, query: str) -> str:
+            return self.generic_override(og_self, query=query)
+
+        return run
 
 
 class CassettePatcherBuilder(OgCassettePatcherBuilder):
