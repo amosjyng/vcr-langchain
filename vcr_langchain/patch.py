@@ -41,6 +41,7 @@ class GenericPatch:
 
     def get_generic_override_fn(self):
         def fn_override(og_self, **kwargs):
+            """Actual override functionality"""
             request = Request(tool=self.cls.__name__, **kwargs)
             cached_response = self.cassette.lookup(request)
             if cached_response:
@@ -69,6 +70,7 @@ class SerpPatch(GenericPatch):
 
     def get_same_signature_override(self):
         def run(og_self, query: str) -> str:
+            """Same signature override patched into SerpAPIWrapper"""
             return self.generic_override(og_self, query=query)
 
         return run
@@ -80,6 +82,7 @@ class PythonREPLPatch(GenericPatch):
 
     def get_same_signature_override(self):
         def run(og_self, command: str) -> str:
+            """Same signature override patched into PythonREPL"""
             return self.generic_override(og_self, command=command)
 
         return run
