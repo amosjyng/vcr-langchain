@@ -372,14 +372,14 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "langchain"
-version = "0.0.66"
+version = "0.0.69"
 description = "Building applications with LLMs through composability"
 category = "main"
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langchain-0.0.66-py3-none-any.whl", hash = "sha256:a974c453849da701bbae239e370c53481d12ed17ab40a411e912f4be161bfe8f"},
-    {file = "langchain-0.0.66.tar.gz", hash = "sha256:4365bec2d3956a78128aaef37cf6736ee983b3c600194c318c4ab0851c71f7a9"},
+    {file = "langchain-0.0.69-py3-none-any.whl", hash = "sha256:8479168f02005e1e3764b3b9bb46e3654f0e3b01ea1e886e1a0d322bd675ffba"},
+    {file = "langchain-0.0.69.tar.gz", hash = "sha256:191c19e068c25295db574107e1c6e570ce26de0902d5c5d39b028e33092f6863"},
 ]
 
 [package.dependencies]
@@ -1130,4 +1130,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "2f01465cae0d0f3ab63f8862d0f86ec2e9798a6083a18fddf3db87f4e597cadc"
+content-hash = "086acc60f5811ec17aee9e5b940c3dec54dee36d16372905016e6075f19d4d48"
