@@ -14,7 +14,7 @@ REQUESTS = {
 }
 
 
-def assert_matcher(different_field):
+def test_matchers() -> None:
     matcher = matchers.match_all
     for k1, k2 in itertools.permutations(REQUESTS, 2):
         expecting_assertion_error = "base" not in k1 or "base" not in k2
@@ -23,8 +23,3 @@ def assert_matcher(different_field):
                 matcher(REQUESTS[k1], REQUESTS[k2])
         else:
             assert matcher(REQUESTS[k1], REQUESTS[k2]) is None
-
-
-def test_matchers():
-    assert_matcher("prompt")
-    assert_matcher("llm_string")

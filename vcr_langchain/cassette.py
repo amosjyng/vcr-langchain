@@ -1,5 +1,6 @@
 import contextlib
 import logging
+from typing import Any, Callable, Dict, Iterator, Optional, Tuple
 
 from vcr.cassette import Cassette as OgCassette
 from vcr.cassette import CassetteContextDecorator as OgCassetteContextDecorator
@@ -7,12 +8,16 @@ from vcr.errors import CannotOverwriteExistingCassetteException
 
 from .matchers import match_all
 from .patch import CassettePatcherBuilder
+from .request import Request
+from .stubs import Cassette as CassetteProtocol
 
 log = logging.getLogger(__name__)
 
 
 class CassetteContextDecorator(OgCassetteContextDecorator):
-    def _patch_generator(self, cassette):
+    def _patch_generator(
+        self, cassette: CassetteProtocol
+    ) -> Iterator[CassetteProtocol]:
         """
         Modified from OG _patch_generator. We need this to override the usage of the OG
         CassettePatcherBuilder in the function, but the TODO is fixed in the vcrpy
@@ -28,18 +33,20 @@ class CassetteContextDecorator(OgCassetteContextDecorator):
 
 
 class Cassette(OgCassette):
-    def __init__(self, match_on=(match_all,), **kwargs):
+    def __init__(
+        self, match_on: Tuple[Callable, ...] = (match_all,), **kwargs: Dict[str, Any]
+    ):
         super().__init__(match_on=match_on, **kwargs)
 
     @classmethod
-    def use_arg_getter(cls, arg_getter):
+    def use_arg_getter(cls, arg_getter: Callable) -> CassetteContextDecorator:
         return CassetteContextDecorator(cls, arg_getter)
 
     @classmethod
-    def use(cls, **kwargs):
+    def use(cls, **kwargs: Dict[str, Any]) -> CassetteContextDecorator:
         return CassetteContextDecorator.from_args(cls, **kwargs)
 
-    def lookup(self, request):
+    def lookup(self, request: Request) -> Optional[Any]:
         """
         Code modified from OG vcrpy:
         https://github.com/kevin1024/vcrpy/blob/v4.2.1/vcr/stubs/__init__.py#L225

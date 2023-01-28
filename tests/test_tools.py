@@ -5,18 +5,18 @@ from tests import TemporaryCassettePath, vcr
 
 
 @vcr.use_cassette()
-def test_use_serp_api():
+def test_use_serp_api() -> None:
     answer = SerpAPIWrapper().run(query="how far is the moon receding every year")
     assert answer == "about 3.78 cm per year"
 
 
 @vcr.use_cassette()
-def test_use_serp_api_without_keyword():
+def test_use_serp_api_without_keyword() -> None:
     answer = SerpAPIWrapper().run("how big is the sun")
     assert answer == "432,690 mi"
 
 
-def test_use_python_repl():
+def test_use_python_repl() -> None:
     cassette_path = "python-with-keyword.yaml"
     with TemporaryCassettePath(cassette_path):
         with vcr.use_cassette(cassette_path):
@@ -24,7 +24,7 @@ def test_use_python_repl():
             assert answer.strip() == "20"
 
 
-def test_use_python_repl_without_keyword():
+def test_use_python_repl_without_keyword() -> None:
     cassette_path = "python-no-keyword.yaml"
     with TemporaryCassettePath(cassette_path):
         with vcr.use_cassette(cassette_path):
@@ -32,6 +32,6 @@ def test_use_python_repl_without_keyword():
             assert answer.strip() == "1"
 
 
-def test_use_python_repl_regularly():
+def test_use_python_repl_regularly() -> None:
     answer = PythonREPL().run("print(5 + 4)")
     assert answer.strip() == "9"

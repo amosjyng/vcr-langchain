@@ -27,7 +27,7 @@ class MockLLM(LLM):
 assert MockLLM._NUM_CALLS == 0
 
 
-def test_use_as_with_context():
+def test_use_as_with_context() -> None:
     """This test doubles as a test for successful serialization"""
     cassette_path = "tests/context.yaml"
     with TemporaryCassettePath(cassette_path):
@@ -40,7 +40,7 @@ def test_use_as_with_context():
             assert new_llm("Tell me a silly joke") == result
 
 
-def test_no_cache_outside_of_context():
+def test_no_cache_outside_of_context() -> None:
     cassette_path = "tests/temp.yaml"
     assert langchain.llm_cache is None
     with TemporaryCassettePath(cassette_path):
@@ -52,7 +52,7 @@ def test_no_cache_outside_of_context():
         assert langchain.llm_cache is None
 
 
-def test_response_changes_without_context():
+def test_response_changes_without_context() -> None:
     llm = MockLLM()
     result = llm("Tell me a serious joke")
 
@@ -61,12 +61,12 @@ def test_response_changes_without_context():
 
 
 @vcr.use_cassette()
-def test_use_as_test_decorator():
+def test_use_as_test_decorator() -> None:
     llm = MockLLM()
     llm("Tell me a surreal joke")
 
 
 @vcr.use_cassette("tests/custom.yaml")
-def test_use_custom_file():
+def test_use_custom_file() -> None:
     llm = MockLLM()
     llm("Tell me a real joke")

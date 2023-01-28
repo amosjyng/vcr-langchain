@@ -1,4 +1,5 @@
 import logging
+from typing import Any, Callable, List, Tuple, Type
 
 import gorilla
 import langchain
@@ -8,6 +9,7 @@ from vcr.patch import CassettePatcherBuilder as OgCassettePatcherBuilder
 
 from .cache import VcrCache
 from .request import Request
+from .stubs import Cassette
 
 log = logging.getLogger(__name__)
 
@@ -19,13 +21,13 @@ VCR_VIZ_INTEROP_PREFIX = "_vcr_"
 
 
 class CachePatch:
-    def __init__(self, cassette):
+    def __init__(self, cassette: Cassette):
         self.cassette = cassette
 
-    def __enter__(self):
+    def __enter__(self) -> None:
         langchain.llm_cache = VcrCache(self.cassette)
 
-    def __exit__(self, *args):
+    def __exit__(self, *_: List[Any]) -> None:
         langchain.llm_cache = None
 
 
@@ -38,7 +40,7 @@ class GenericPatch:
     serialization. See SerpPatch as an example of what to do.
     """
 
-    def __init__(self, cassette, cls, fn_name):
+    def __init__(self, cassette: Cassette, cls: Type, fn_name: str):
         self.cassette = cassette
         self.cls = cls
         self.fn_name = fn_name
@@ -68,8 +70,8 @@ class GenericPatch:
             settings=gorilla.Settings(store_hit=True, allow_hit=not viz_was_here),
         )
 
-    def get_generic_override_fn(self):
-        def fn_override(og_self, **kwargs):
+    def get_generic_override_fn(self) -> Callable:
+        def fn_override(og_self: Any, **kwargs: str) -> Any:
             """Actual override functionality"""
             request = Request(tool=self.cls.__name__, **kwargs)
             cached_response = self.cassette.lookup(request)
@@ -82,23 +84,23 @@ class GenericPatch:
 
         return fn_override
 
-    def get_same_signature_override(self):
+    def get_same_signature_override(self) -> Callable:
         """Override this function in the inherited class to convert args to kwargs"""
         return self.get_generic_override_fn()
 
-    def __enter__(self):
+    def __enter__(self) -> None:
         gorilla.apply(self.patch, id=VCR_LANGCHAIN_PATCH_ID)
 
-    def __exit__(self, *args):
+    def __exit__(self, *_: List[Any]) -> None:
         gorilla.revert(self.patch)
 
 
 class SerpPatch(GenericPatch):
-    def __init__(self, cassette):
+    def __init__(self, cassette: Cassette):
         super().__init__(cassette, SerpAPIWrapper, "run")
 
-    def get_same_signature_override(self):
-        def run(og_self, query: str) -> str:
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: SerpPatch, query: str) -> str:
             """Same signature override patched into SerpAPIWrapper"""
             return self.generic_override(og_self, query=query)
 
@@ -106,11 +108,11 @@ class SerpPatch(GenericPatch):
 
 
 class PythonREPLPatch(GenericPatch):
-    def __init__(self, cassette):
+    def __init__(self, cassette: Cassette):
         super().__init__(cassette, PythonREPL, "run")
 
-    def get_same_signature_override(self):
-        def run(og_self, command: str) -> str:
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: PythonREPL, command: str) -> str:
             """Same signature override patched into PythonREPL"""
             return self.generic_override(og_self, command=command)
 
@@ -118,7 +120,7 @@ class PythonREPLPatch(GenericPatch):
 
 
 class CassettePatcherBuilder(OgCassettePatcherBuilder):
-    def build(self):
+    def build(self) -> Tuple[Any, ...]:
         return (
             CachePatch(self._cassette),
             SerpPatch(self._cassette),

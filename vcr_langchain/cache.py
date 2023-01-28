@@ -4,12 +4,13 @@ from langchain.cache import RETURN_VAL_TYPE, BaseCache
 from vcr.errors import CannotOverwriteExistingCassetteException
 
 from .request import Request
+from .stubs import Cassette
 
 
 class VcrCache(BaseCache):
     """Cache that hooks into VCR functionality"""
 
-    def __init__(self, cassette) -> None:
+    def __init__(self, cassette: Cassette) -> None:
         """Initialize with possibly pre-existing cassette."""
         self.cassette = cassette
 
