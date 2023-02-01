@@ -392,14 +392,14 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "langchain"
-version = "0.0.73"
+version = "0.0.75"
 description = "Building applications with LLMs through composability"
 category = "main"
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langchain-0.0.73-py3-none-any.whl", hash = "sha256:1b8f642a2f50945072356cd31966cf9c91749b2a52575766bebb8068e51e7c0b"},
-    {file = "langchain-0.0.73.tar.gz", hash = "sha256:b385f7991a0427c89525793924276d50bc7b1532eb55183e601d3770afe49204"},
+    {file = "langchain-0.0.75-py3-none-any.whl", hash = "sha256:e14f1bfc709ad46c621020cfb5663a66c130975cc8bf79a15992180fd970ef33"},
+    {file = "langchain-0.0.75.tar.gz", hash = "sha256:919c3b39c529e4fb28700a368ded8cd5eb8d54de7c5fadcb08067d18de92fb3d"},
 ]
 
 [package.dependencies]
@@ -411,7 +411,7 @@ requests = ">=2,<3"
 SQLAlchemy = ">=1,<2"
 
 [package.extras]
-all = ["beautifulsoup4 (>=4,<5)", "elasticsearch (>=8,<9)", "faiss-cpu (>=1,<2)", "google-api-python-client (==2.70.0)", "jinja2 (>=3,<4)", "manifest-ml (>=0.0.1,<0.0.2)", "nltk (>=3,<4)", "pinecone-client (>=2,<3)", "qdrant-client (>=0.11.7,<0.12.0)", "redis (>=4,<5)", "spacy (>=3,<4)", "tiktoken (>=0,<1)", "torch (>=1,<2)", "transformers (>=4,<5)", "weaviate-client (>=3,<4)", "wikipedia (>=1,<2)", "wolframalpha (==5.0.0)"]
+all = ["beautifulsoup4 (>=4,<5)", "elasticsearch (>=8,<9)", "faiss-cpu (>=1,<2)", "google-api-python-client (==2.70.0)", "jinja2 (>=3,<4)", "manifest-ml (>=0.0.1,<0.0.2)", "nltk (>=3,<4)", "pinecone-client (>=2,<3)", "qdrant-client (>=0.11.7,<0.12.0)", "redis (>=4,<5)", "spacy (>=3,<4)", "tensorflow-text (>=2.11.0,<3.0.0)", "tiktoken (>=0,<1)", "torch (>=1,<2)", "transformers (>=4,<5)", "weaviate-client (>=3,<4)", "wikipedia (>=1,<2)", "wolframalpha (==5.0.0)"]
 llms = ["manifest-ml (>=0.0.1,<0.0.2)", "torch (>=1,<2)", "transformers (>=4,<5)"]
 
 [[package]]
@@ -1203,4 +1203,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "df6ef0f1f5b3c7bc24a60d7cf2b5d41a1da77e5a8760b5dc6fdac513e8a8089d"
+content-hash = "3d28aea78702fd205cdaf911747f0a23adf82eb81e09cbc419b1f04bdfca47c7"
