@@ -32,7 +32,7 @@ For more examples, see [the usages test file](tests/test_usage.py).
 ### Why not just use VCR.py directly?
 
 - This offers higher-level, more human-readable recordings for inspection
-- This supports recordings of langchain tool interactions as well, which includes non-network requests such as command executions inside Bash (coming soon) or the Python REPL. What if you wanted to make sure that your agent supports file deletion, without actually letting it delete anything?
+- This supports recordings of langchain tool interactions as well, which includes non-network requests such as command executions inside Bash or the Python REPL
 
 ### Pitfalls
 

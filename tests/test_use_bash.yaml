@@ -1,0 +1,8 @@
+interactions:
+- request:
+    commands: date
+    tool: BashProcess
+  response: 'Wed Feb  1 11:08:07 +07 2023
+
+    '
+version: 1

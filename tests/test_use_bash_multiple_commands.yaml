@@ -1,0 +1,11 @@
+interactions:
+- request:
+    commands:
+    - touch tests/asdf
+    - ls tests/asdf
+    - rm tests/asdf
+    tool: BashProcess
+  response: 'tests/asdf
+
+    '
+version: 1

@@ -1,10 +1,11 @@
 import logging
-from typing import Any, Callable, List, Tuple, Type
+from typing import Any, Callable, List, Tuple, Type, Union
 
 import gorilla
 import langchain
 from langchain.python import PythonREPL
 from langchain.serpapi import SerpAPIWrapper
+from langchain.utilities.bash import BashProcess
 from vcr.patch import CassettePatcherBuilder as OgCassettePatcherBuilder
 
 from .cache import VcrCache
@@ -119,10 +120,23 @@ class PythonREPLPatch(GenericPatch):
         return run
 
 
+class BashProcessPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, BashProcess, "run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: BashProcess, commands: Union[str, List[str]]) -> str:
+            """Same signature override patched into BashProcess"""
+            return self.generic_override(og_self, commands=commands)
+
+        return run
+
+
 class CassettePatcherBuilder(OgCassettePatcherBuilder):
     def build(self) -> Tuple[Any, ...]:
         return (
             CachePatch(self._cassette),
             SerpPatch(self._cassette),
             PythonREPLPatch(self._cassette),
+            BashProcessPatch(self._cassette),
         )
