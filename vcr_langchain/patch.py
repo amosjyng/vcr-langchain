@@ -1,16 +1,15 @@
+import itertools
+import json
 import logging
-from typing import Any, Callable, List, Tuple, Type, Union
+from typing import Any, Callable, Iterable, List, Optional, Type, Union
 
 import gorilla
-import langchain
 from langchain.python import PythonREPL
-from langchain.serpapi import SerpAPIWrapper
 from langchain.utilities.bash import BashProcess
-from vcr.patch import CassettePatcherBuilder as OgCassettePatcherBuilder
-
-from .cache import VcrCache
-from .request import Request
-from .stubs import Cassette
+from vcr.cassette import Cassette
+from vcr.errors import CannotOverwriteExistingCassetteException
+from vcr.patch import CassettePatcherBuilder
+from vcr.request import Request
 
 log = logging.getLogger(__name__)
 
@@ -21,15 +20,23 @@ VCR_LANGCHAIN_PATCH_ID = "lc-vcr"
 VCR_VIZ_INTEROP_PREFIX = "_vcr_"
 
 
-class CachePatch:
-    def __init__(self, cassette: Cassette):
-        self.cassette = cassette
+log = logging.getLogger(__name__)
 
-    def __enter__(self) -> None:
-        langchain.llm_cache = VcrCache(self.cassette)
 
-    def __exit__(self, *_: List[Any]) -> None:
-        langchain.llm_cache = None
+def lookup(cassette: Cassette, request: Request) -> Optional[Any]:
+    """
+    Code modified from OG vcrpy:
+    https://github.com/kevin1024/vcrpy/blob/v4.2.1/vcr/stubs/__init__.py#L225
+    """
+    if cassette.can_play_response_for(request):
+        log.info("Playing response for {} from cassette".format(request))
+        return cassette.play_response(request)
+    else:
+        if cassette.write_protected and cassette.filter_request(request):
+            raise CannotOverwriteExistingCassetteException(
+                cassette=cassette, failed_request=request
+            )
+        return None
 
 
 class GenericPatch:
@@ -74,8 +81,15 @@ class GenericPatch:
     def get_generic_override_fn(self) -> Callable:
         def fn_override(og_self: Any, **kwargs: str) -> Any:
             """Actual override functionality"""
-            request = Request(tool=self.cls.__name__, **kwargs)
-            cached_response = self.cassette.lookup(request)
+            tool_name = self.cls.__name__
+            fake_uri = f"tool://{tool_name}"
+            request = Request(
+                method="POST",
+                uri=fake_uri,
+                body=json.dumps(kwargs, sort_keys=True),
+                headers={},
+            )
+            cached_response = lookup(self.cassette, request)
             if cached_response:
                 return cached_response
 
@@ -94,18 +108,6 @@ class GenericPatch:
 
     def __exit__(self, *_: List[Any]) -> None:
         gorilla.revert(self.patch)
-
-
-class SerpPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, SerpAPIWrapper, "run")
-
-    def get_same_signature_override(self) -> Callable:
-        def run(og_self: SerpPatch, query: str) -> str:
-            """Same signature override patched into SerpAPIWrapper"""
-            return self.generic_override(og_self, query=query)
-
-        return run
 
 
 class PythonREPLPatch(GenericPatch):
@@ -132,11 +134,18 @@ class BashProcessPatch(GenericPatch):
         return run
 
 
-class CassettePatcherBuilder(OgCassettePatcherBuilder):
-    def build(self) -> Tuple[Any, ...]:
-        return (
-            CachePatch(self._cassette),
-            SerpPatch(self._cassette),
-            PythonREPLPatch(self._cassette),
-            BashProcessPatch(self._cassette),
+def get_overridden_build(og_build: Callable) -> Callable:
+    def build(og_self: CassettePatcherBuilder) -> Iterable[Any]:
+        tool_patches = [
+            PythonREPLPatch(og_self._cassette),
+            BashProcessPatch(og_self._cassette),
+        ]
+        return itertools.chain(
+            og_build(og_self),
+            tool_patches,
         )
+
+    return build
+
+
+CassettePatcherBuilder.build = get_overridden_build(CassettePatcherBuilder.build)

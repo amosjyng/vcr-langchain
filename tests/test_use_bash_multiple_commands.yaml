@@ -1,10 +1,9 @@
 interactions:
 - request:
-    commands:
-    - touch tests/asdf
-    - ls tests/asdf
-    - rm tests/asdf
-    tool: BashProcess
+    body: '{"commands": ["touch tests/asdf", "ls tests/asdf", "rm tests/asdf"]}'
+    headers: {}
+    method: POST
+    uri: tool://BashProcess
   response: 'tests/asdf
 
     '

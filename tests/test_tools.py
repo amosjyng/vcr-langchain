@@ -2,7 +2,8 @@ from langchain.python import PythonREPL
 from langchain.serpapi import SerpAPIWrapper
 from langchain.utilities.bash import BashProcess
 
-from tests import TemporaryCassettePath, vcr
+import vcr_langchain as vcr
+from tests import TemporaryCassettePath
 
 
 @vcr.use_cassette()
@@ -41,7 +42,7 @@ def test_use_python_repl_regularly() -> None:
 @vcr.use_cassette()
 def test_use_bash() -> None:
     time = BashProcess().run("date")
-    assert time == "Wed Feb  1 11:08:07 +07 2023\n"
+    assert time == "Fri Feb  3 13:05:45 +07 2023\n"
 
 
 @vcr.use_cassette()

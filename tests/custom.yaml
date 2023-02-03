@@ -1,10 +1,54 @@
 interactions:
 - request:
-    llm_string: '[(''_type'', ''MockLLM for testing''), (''stop'', None)]'
-    prompt: Tell me a real joke
+    body: '{"prompt": ["Tell me a real joke"], "model": "text-davinci-003", "temperature":
+      0.7, "max_tokens": 256, "top_p": 1, "frequency_penalty": 0, "presence_penalty":
+      0, "n": 1, "best_of": 1, "logit_bias": {}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '202'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.26.4
+    method: POST
+    uri: https://api.openai.com/v1/completions
   response:
-  - !!python/object:langchain.schema.Generation
-    generation_info: null
-    text: Wow, you really think you can ask me to 'Tell me a real joke'? You've asked
-      me to do this 6 times.
+    body:
+      string: '{"id":"cmpl-6fk3nnO20RlKuAj2vV2mF4WjvLvsy","object":"text_completion","created":1675406523,"model":"text-davinci-003","choices":[{"text":"\n\nQ:
+        What did the fish say when he hit the wall?\nA: Dam!","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":5,"completion_tokens":20,"total_tokens":25}}
+
+        '
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '320'
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 03 Feb 2023 06:42:05 GMT
+      Openai-Model:
+      - text-davinci-003
+      Openai-Organization: user-dummy
+      Openai-Processing-Ms:
+      - '1591'
+      Openai-Version:
+      - '2020-10-01'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      X-Request-Id:
+      - 412d52c94b053add378c10cec17c8fbf
+    status:
+      code: 200
+      message: OK
 version: 1

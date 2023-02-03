@@ -1,6 +1,6 @@
 # VCR LangChain
 
-Adapts [VCR.py](https://github.com/kevin1024/vcrpy) for use with [LangChain](https://github.com/hwchase17/langchain). Refactor with confidence as you record and replay all your LLM logic in a contained environment, free from any and all side effects.
+Patches [VCR.py](https://github.com/kevin1024/vcrpy) to include non-network tooling for use with [LangChain](https://github.com/hwchase17/langchain). Refactor with confidence as you record and replay all your LLM logic in a contained environment, free from any and all side effects.
 
 ## Quickstart
 
@@ -28,11 +28,6 @@ The next time you run it:
 - you no longer need to have real API keys defined for test execution in CI environments
 
 For more examples, see [the usages test file](tests/test_usage.py).
-
-### Why not just use VCR.py directly?
-
-- This offers higher-level, more human-readable recordings for inspection
-- This supports recordings of langchain tool interactions as well, which includes non-network requests such as command executions inside Bash or the Python REPL
 
 ### Pitfalls
 

@@ -1,8 +1,10 @@
 interactions:
 - request:
-    commands: date
-    tool: BashProcess
-  response: 'Wed Feb  1 11:08:07 +07 2023
+    body: '{"commands": "date"}'
+    headers: {}
+    method: POST
+    uri: tool://BashProcess
+  response: 'Fri Feb  3 13:05:45 +07 2023
 
     '
 version: 1
