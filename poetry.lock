@@ -509,14 +509,14 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "langchain"
-version = "0.0.76"
+version = "0.0.77"
 description = "Building applications with LLMs through composability"
 category = "main"
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langchain-0.0.76-py3-none-any.whl", hash = "sha256:a8b735bfbeac62b056bc91c151e94e6007d246acbcd9e31a3b4f3b4e46ff5c80"},
-    {file = "langchain-0.0.76.tar.gz", hash = "sha256:f5dac4e69d58f0c15d280544a608a371baf54472809890f1ab836aeb74b65ff8"},
+    {file = "langchain-0.0.77-py3-none-any.whl", hash = "sha256:139d510acfe32ecaddb18d43153e0d574e9ab01af049837a4727ff9f76982125"},
+    {file = "langchain-0.0.77.tar.gz", hash = "sha256:7d1d854e58d7e60ec2601658b7c1af84cb8acf2e17f26f6346755cef2230d0a6"},
 ]
 
 [package.dependencies]
@@ -526,6 +526,7 @@ pydantic = ">=1,<2"
 PyYAML = ">=6,<7"
 requests = ">=2,<3"
 SQLAlchemy = ">=1,<2"
+tenacity = ">=8.1.0,<9.0.0"
 
 [package.extras]
 all = ["beautifulsoup4 (>=4,<5)", "elasticsearch (>=8,<9)", "faiss-cpu (>=1,<2)", "google-api-python-client (==2.70.0)", "jinja2 (>=3,<4)", "manifest-ml (>=0.0.1,<0.0.2)", "nltk (>=3,<4)", "pinecone-client (>=2,<3)", "qdrant-client (>=0.11.7,<0.12.0)", "redis (>=4,<5)", "spacy (>=3,<4)", "tensorflow-text (>=2.11.0,<3.0.0)", "tiktoken (>=0,<1)", "torch (>=1,<2)", "transformers (>=4,<5)", "weaviate-client (>=3,<4)", "wikipedia (>=1,<2)", "wolframalpha (==5.0.0)"]
@@ -1103,6 +1104,21 @@ pymysql = ["pymysql", "pymysql (<1)"]
 sqlcipher = ["sqlcipher3-binary"]
 
 [[package]]
+name = "tenacity"
+version = "8.1.0"
+description = "Retry code until it succeeds"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "tenacity-8.1.0-py3-none-any.whl", hash = "sha256:35525cd47f82830069f0d6b73f7eb83bc5b73ee2fff0437952cedf98b27653ac"},
+    {file = "tenacity-8.1.0.tar.gz", hash = "sha256:e48c437fdf9340f5666b92cd7990e96bc5fc955e1298baf4a907e3972067a445"},
+]
+
+[package.extras]
+doc = ["reno", "sphinx", "tornado (>=4.5)"]
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -1363,4 +1379,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "0afd0dbf97a6ea72199570d77cc2f203b5d8a18a53e5e3c716a2413c815a2743"
+content-hash = "2925f02825a7b24ec5e5b4e001744a4ae2da31d684f9000e9adbddba8e8db8d3"
