@@ -22,6 +22,7 @@ default_vcr = VCR(
     before_record_response=scrub_header(
         "Openai-Organization", replacement="user-dummy"
     ),
+    match_on=("method", "scheme", "host", "port", "path", "query", "body"),
 )
 
 use_cassette = default_vcr.use_cassette
