@@ -1,0 +1,22 @@
+interactions:
+- request:
+    body: '{"commands": "ls tests/bsdf"}'
+    headers: {}
+    method: POST
+    uri: tool://BashProcess
+  response: Command 'ls tests/bsdf' returned non-zero exit status 2.
+- request:
+    body: '{"commands": "touch tests/bsdf"}'
+    headers: {}
+    method: POST
+    uri: tool://BashProcess
+  response: ''
+- request:
+    body: '{"commands": "ls tests/bsdf"}'
+    headers: {}
+    method: POST
+    uri: tool://BashProcess
+  response: 'tests/bsdf
+
+    '
+version: 1
