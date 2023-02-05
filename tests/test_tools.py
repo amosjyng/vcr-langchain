@@ -61,16 +61,16 @@ def test_use_bash_multiple_commands() -> None:
 @vcr.use_cassette()
 def test_use_bash_same_commands() -> None:
     test_filename = "tests/bsdf"
-    with TemporaryCassettePath(test_filename):
-        bash = BashProcess()
-        old_results = bash.run(
-            f"ls {test_filename}",
-        )
-        assert "returned non-zero exit status 2" in old_results
-        bash.run(
-            f"touch {test_filename}",
-        )
-        new_results = bash.run(
-            f"ls {test_filename}",
-        )
-        assert new_results == f"tests/bsdf\n"
+    bash = BashProcess()
+    old_results = bash.run(
+        f"ls {test_filename}",
+    )
+    assert "returned non-zero exit status 2" in old_results
+    bash.run(
+        f"touch {test_filename}",
+    )
+    new_results = bash.run(
+        f"ls {test_filename}",
+    )
+    assert new_results == f"tests/bsdf\n"
+    bash.run(f"rm {test_filename}")

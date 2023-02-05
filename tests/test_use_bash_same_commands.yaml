@@ -19,4 +19,10 @@ interactions:
   response: 'tests/bsdf
 
     '
+- request:
+    body: '{"commands": "rm tests/bsdf"}'
+    headers: {}
+    method: POST
+    uri: tool://BashProcess
+  response: ''
 version: 1

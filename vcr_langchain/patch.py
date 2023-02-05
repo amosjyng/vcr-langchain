@@ -90,7 +90,7 @@ class GenericPatch:
                 headers={},
             )
             cached_response = lookup(self.cassette, request)
-            if cached_response:
+            if cached_response is not None:
                 return cached_response
 
             new_response = self.og_fn(og_self, **kwargs)
