@@ -20,6 +20,13 @@ VCR_LANGCHAIN_PATCH_ID = "lc-vcr"
 VCR_VIZ_INTEROP_PREFIX = "_vcr_"
 
 
+CUSTOM_PATCHERS: List[Any] = []
+
+
+def add_patchers(*patchers: Any) -> None:
+    CUSTOM_PATCHERS.extend(patchers)
+
+
 log = logging.getLogger(__name__)
 
 
@@ -45,7 +52,7 @@ class GenericPatch:
 
     Inherit from this, and ideally create a copy of the function you're patching in
     order to ensure that everything always gets converted into kwargs for
-    serialization. See SerpPatch as an example of what to do.
+    serialization. See PythonREPLPatch as an example of what to do.
     """
 
     def __init__(self, cassette: Cassette, cls: Type, fn_name: str):
@@ -136,16 +143,13 @@ class BashProcessPatch(GenericPatch):
 
 def get_overridden_build(og_build: Callable) -> Callable:
     def build(og_self: CassettePatcherBuilder) -> Iterable[Any]:
-        tool_patches = [
-            PythonREPLPatch(og_self._cassette),
-            BashProcessPatch(og_self._cassette),
-        ]
-        return itertools.chain(
-            og_build(og_self),
-            tool_patches,
-        )
+        patches = [patcher(og_self._cassette) for patcher in CUSTOM_PATCHERS]
+        return itertools.chain(og_build(og_self), patches)
 
     return build
 
 
 CassettePatcherBuilder.build = get_overridden_build(CassettePatcherBuilder.build)
+# add this after overriding the above build function, to make sure that users of this
+# library can also add their own custom patchers in
+add_patchers(PythonREPLPatch, BashProcessPatch)
