@@ -1,6 +1,6 @@
 .PHONY: format lint tests
 
-all: test format lint
+all: format lint test
 
 format:
 	poetry run black .
