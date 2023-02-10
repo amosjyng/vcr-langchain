@@ -1,5 +1,7 @@
 .PHONY: format lint tests
 
+all: test format lint
+
 format:
 	poetry run black .
 	poetry run isort .
@@ -23,6 +25,10 @@ clean:
 clean-tests:
 	find . -name "*.yaml" -type f | xargs rm -f
 
+upgrade-langchain:
+	poetry add langchain@latest
+	git commit -a -m "Upgrade to latest langchain"
+
 release:
 	test -z "$$(git status --porcelain)"
 	poetry version patch
@@ -30,5 +36,3 @@ release:
 	git tag -a -m "Creating version v$$(poetry version -s)" "v$$(poetry version -s)"
 	git push --follow-tags
 	poetry publish --build --username $$PYPI_USERNAME --password $$PYPI_PASSWORD
-
-all: test format lint
