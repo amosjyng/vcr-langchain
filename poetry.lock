@@ -564,14 +564,14 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "langchain"
-version = "0.0.81"
+version = "0.0.88"
 description = "Building applications with LLMs through composability"
 category = "main"
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langchain-0.0.81-py3-none-any.whl", hash = "sha256:d9b819e8dbce865210af84e6a198f844914d91682526fa73261732a8a0f859d3"},
-    {file = "langchain-0.0.81.tar.gz", hash = "sha256:53698d7e7f82cad41de35f5b42d339301da86fc5771e483b0ca0705452723c5e"},
+    {file = "langchain-0.0.88-py3-none-any.whl", hash = "sha256:f7afb9590a5594493eb113b5e41a8b2a14348129dbdf25e32b1da0d030dc5306"},
+    {file = "langchain-0.0.88.tar.gz", hash = "sha256:21e7e1c50199c2d752888f422ebab52eba1079657a99d3bbb95ba5d979802a9f"},
 ]
 
 [package.dependencies]
@@ -585,8 +585,8 @@ SQLAlchemy = ">=1,<2"
 tenacity = ">=8.1.0,<9.0.0"
 
 [package.extras]
-all = ["beautifulsoup4 (>=4,<5)", "elasticsearch (>=8,<9)", "faiss-cpu (>=1,<2)", "google-api-python-client (==2.70.0)", "jinja2 (>=3,<4)", "manifest-ml (>=0.0.1,<0.0.2)", "nltk (>=3,<4)", "pinecone-client (>=2,<3)", "qdrant-client (>=0.11.7,<0.12.0)", "redis (>=4,<5)", "spacy (>=3,<4)", "tensorflow-text (>=2.11.0,<3.0.0)", "tiktoken (>=0,<1)", "torch (>=1,<2)", "transformers (>=4,<5)", "weaviate-client (>=3,<4)", "wikipedia (>=1,<2)", "wolframalpha (==5.0.0)"]
-llms = ["manifest-ml (>=0.0.1,<0.0.2)", "torch (>=1,<2)", "transformers (>=4,<5)"]
+all = ["anthropic (>=0.2.2,<0.3.0)", "beautifulsoup4 (>=4,<5)", "cohere (>=3,<4)", "elasticsearch (>=8,<9)", "faiss-cpu (>=1,<2)", "google-api-python-client (==2.70.0)", "google-search-results (>=2,<3)", "huggingface_hub (>=0,<1)", "jinja2 (>=3,<4)", "manifest-ml (>=0.0.1,<0.0.2)", "networkx (>=2.6.3,<3.0.0)", "nlpcloud (>=1,<2)", "nltk (>=3,<4)", "openai (>=0,<1)", "pinecone-client (>=2,<3)", "pypdf (>=3.4.0,<4.0.0)", "qdrant-client (>=0.11.7,<0.12.0)", "redis (>=4,<5)", "sentence-transformers (>=2,<3)", "spacy (>=3,<4)", "tensorflow-text (>=2.11.0,<3.0.0)", "tiktoken (>=0,<1)", "torch (>=1,<2)", "transformers (>=4,<5)", "weaviate-client (>=3,<4)", "wikipedia (>=1,<2)", "wolframalpha (==5.0.0)"]
+llms = ["anthropic (>=0.2.2,<0.3.0)", "cohere (>=3,<4)", "huggingface_hub (>=0,<1)", "manifest-ml (>=0.0.1,<0.0.2)", "nlpcloud (>=1,<2)", "openai (>=0,<1)", "torch (>=1,<2)", "transformers (>=4,<5)"]
 
 [[package]]
 name = "marshmallow"
@@ -1435,4 +1435,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "6897a0bce568fce867eaa1d8bb5e52f194107787eb072f774aad3c9afaf4ad89"
+content-hash = "0da23936d6aac6903ba5ef41c0f905d57d981e94c7f65e88d579fe4be0f3840f"
