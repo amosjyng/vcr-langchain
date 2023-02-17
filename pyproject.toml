@@ -31,6 +31,10 @@ disallow_untyped_defs = "True"
 markers = [
     "network: marks tests as requiring network services",
 ]
+filterwarnings = [
+    "error",
+    'ignore:distutils Version classes are deprecated:DeprecationWarning',
+]
 
 [build-system]
 requires = ["poetry-core"]
