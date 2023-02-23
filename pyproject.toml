@@ -9,7 +9,7 @@ packages = [{include = "vcr_langchain"}]
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
 vcrpy = "^4.2.1"
-langchain = "^0.0.88"
+langchain = "^0.0.92"
 gorilla = "^0.4.0"
 
 
@@ -34,6 +34,7 @@ markers = [
 filterwarnings = [
     "error",
     'ignore:distutils Version classes are deprecated:DeprecationWarning',
+    'ignore:unclosed <ssl.SSLSocket:ResourceWarning'
 ]
 
 [build-system]
