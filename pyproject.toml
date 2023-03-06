@@ -22,6 +22,7 @@ flake8 = "^6.0.0"
 google-search-results = "^2.4.1"
 openai = "^0.26.4"
 faiss-cpu = "^1.7.3"
+pre-commit = "^3.1.1"
 
 [tool.mypy]
 ignore_missing_imports = "True"
