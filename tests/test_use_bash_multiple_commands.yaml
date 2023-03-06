@@ -3,7 +3,7 @@ interactions:
     body: '{"commands": ["touch tests/asdf", "ls tests/asdf", "rm tests/asdf"]}'
     headers: {}
     method: POST
-    uri: tool://BashProcess
+    uri: tool://BashProcess/run
   response: 'tests/asdf
 
     '

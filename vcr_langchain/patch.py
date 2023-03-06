@@ -88,8 +88,11 @@ class GenericPatch:
     def get_generic_override_fn(self) -> Callable:
         def fn_override(og_self: Any, **kwargs: str) -> Any:
             """Actual override functionality"""
-            tool_name = self.cls.__name__
-            fake_uri = f"tool://{tool_name}"
+            tool_class_name = self.cls.__name__
+            # record fn_name as well in case we're patching two different functions
+            # from the same class
+            tool_fn_name = self.fn_name
+            fake_uri = f"tool://{tool_class_name}/{tool_fn_name}"
             request = Request(
                 method="POST",
                 uri=fake_uri,
