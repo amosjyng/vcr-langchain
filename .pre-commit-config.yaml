@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: Format code
+        entry: make format
+        language: system
+        always_run: true
+        pass_filenames: false
+      - id: mypy
+        name: Type check
+        entry: poetry run mypy .
+        language: system
+        always_run: true
+        pass_filenames: false
