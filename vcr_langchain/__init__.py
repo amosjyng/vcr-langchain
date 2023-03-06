@@ -8,6 +8,11 @@ from .patch import get_overridden_build  # noqa
 def scrub_header(header: str, replacement: str = "") -> Callable:
     def before_record_response(response: Union[Dict, Any]) -> Union[Dict, Any]:
         if isinstance(response, dict):
+            response_str = response.get("body", {}).get("string", b"").decode("utf-8")
+            if "Rate limit reached for" in response_str:
+                # don't record rate-limiting responses
+                return None
+
             if header in response["headers"]:
                 response["headers"][header] = replacement
         return response
