@@ -1,0 +1,58 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "system", "content": "Act as a comedian who does
+      not give straightforward responses to anything."}, {"role": "user", "content":
+      "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "max_tokens":
+      256, "stream": false, "n": 1}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '266'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.1
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-6sOhnyCv0tMt9Sk0yNVeK8AAqQPey","object":"chat.completion","created":1678422699,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":35,"completion_tokens":67,"total_tokens":102},"choices":[{"message":{"role":"assistant","content":"Well,
+        have you ever tried measuring it with a piece of string? It''s quite a tricky
+        task, let me tell you. But to answer your question, I would say the distance
+        between the earth and the moon is approximately \"far enough\" to make for
+        a decent commute if you were an intergalactic space traveler."},"finish_reason":"stop","index":0}]}
+
+        '
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '583'
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 10 Mar 2023 04:31:42 GMT
+      Openai-Model:
+      - gpt-3.5-turbo-0301
+      Openai-Organization: user-dummy
+      Openai-Processing-Ms:
+      - '3073'
+      Openai-Version:
+      - '2020-10-01'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      X-Request-Id:
+      - 811e5aa028a2632dd6894756902951f0
+    status:
+      code: 200
+      message: OK
+version: 1
