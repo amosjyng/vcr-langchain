@@ -156,6 +156,22 @@ tests = ["attrs[tests-no-zope]", "zope.interface"]
 tests-no-zope = ["cloudpickle", "cloudpickle", "hypothesis", "hypothesis", "mypy (>=0.971,<0.990)", "mypy (>=0.971,<0.990)", "pympler", "pympler", "pytest (>=4.3.0)", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-mypy-plugins", "pytest-xdist[psutil]", "pytest-xdist[psutil]"]
 
 [[package]]
+name = "autoflake"
+version = "2.0.1"
+description = "Removes unused imports and unused variables"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "autoflake-2.0.1-py3-none-any.whl", hash = "sha256:143b0843667734af53532c443e950c787316b9b1155b2273558260b44836e8e4"},
+    {file = "autoflake-2.0.1.tar.gz", hash = "sha256:1ce520131b7f396915242fe91e57221f4d42408529bbe3ae93adafed286591e0"},
+]
+
+[package.dependencies]
+pyflakes = ">=3.0.0"
+tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
+
+[[package]]
 name = "black"
 version = "22.12.0"
 description = "The uncompromising code formatter."
@@ -893,13 +909,13 @@ files = [
 
 [[package]]
 name = "openai"
-version = "0.26.4"
+version = "0.27.1"
 description = "Python client library for the OpenAI API"
 category = "dev"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-0.26.4.tar.gz", hash = "sha256:168813319a1422cb71a5005f9e404065483556cea52c9ccbfb838cda134087a7"},
+    {file = "openai-0.27.1.tar.gz", hash = "sha256:11a8eb9b609653295be6cc67febecd5189f17b22ef015462c5003d8959567fd7"},
 ]
 
 [package.dependencies]
@@ -910,7 +926,7 @@ tqdm = "*"
 [package.extras]
 datalib = ["numpy", "openpyxl (>=3.0.7)", "pandas (>=1.2.3)", "pandas-stubs (>=1.1.0.11)"]
 dev = ["black (>=21.6b0,<22.0)", "pytest (>=6.0.0,<7.0.0)", "pytest-asyncio", "pytest-mock"]
-embeddings = ["matplotlib", "numpy", "openpyxl (>=3.0.7)", "pandas (>=1.2.3)", "pandas-stubs (>=1.1.0.11)", "plotly", "scikit-learn (>=1.0.2)", "sklearn", "tenacity (>=8.0.1)"]
+embeddings = ["matplotlib", "numpy", "openpyxl (>=3.0.7)", "pandas (>=1.2.3)", "pandas-stubs (>=1.1.0.11)", "plotly", "scikit-learn (>=1.0.2)", "scipy", "tenacity (>=8.0.1)"]
 wandb = ["numpy", "openpyxl (>=3.0.7)", "pandas (>=1.2.3)", "pandas-stubs (>=1.1.0.11)", "wandb"]
 
 [[package]]
@@ -1562,4 +1578,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "6a57ddf4c547d10bba535bff15d4723400b9c4bfbbb132433cd3f915d2df332e"
+content-hash = "dfc2eb7ac4e36abb5be1e7b75effb0519e9fe69d59db165242acf4f99d1ef299"
