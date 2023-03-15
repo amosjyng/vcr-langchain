@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vcr-langchain"
-version = "0.0.18"
+version = "0.0.19"
 description = "Record and replay LLM interactions for langchain"
 authors = ["Amos Jun-yeung Ng <me@amos.ng>"]
 readme = "README.md"
