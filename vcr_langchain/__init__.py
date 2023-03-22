@@ -1,8 +1,8 @@
 from typing import Any, Callable, Dict, Union
 
-from vcr import VCR, mode  # noqa
+from vcr import VCR, mode
 
-from .patch import get_overridden_build  # noqa
+from .patch import get_overridden_build
 
 
 def scrub_header(header: str, replacement: str = "") -> Callable:
@@ -33,6 +33,12 @@ default_vcr = VCR(
         "Openai-Organization", replacement="user-dummy"
     ),
     match_on=("method", "scheme", "host", "port", "path", "query", "body"),
+    record_mode=mode.ONCE,
 )
 
 use_cassette = default_vcr.use_cassette
+
+
+__all__ = [
+    "get_overridden_build",
+]
