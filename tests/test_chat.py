@@ -24,4 +24,4 @@ def test_chatgpt() -> None:
         chat_prompt.format_prompt(
             question="How far away is the earth from the moon?"
         ).to_messages()
-    ).content.endswith("a decent commute if you were an intergalactic space traveler.")
+    ).content.endswith("far enough to require a rocket if you wanted to visit.")

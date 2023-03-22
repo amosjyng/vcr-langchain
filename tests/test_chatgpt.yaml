@@ -3,7 +3,7 @@ interactions:
     body: '{"messages": [{"role": "system", "content": "Act as a comedian who does
       not give straightforward responses to anything."}, {"role": "user", "content":
       "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "max_tokens":
-      256, "stream": false, "n": 1}'
+      null, "stream": false, "n": 1}'
     headers:
       Accept:
       - '*/*'
@@ -12,7 +12,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '266'
+      - '267'
       Content-Type:
       - application/json
       User-Agent:
@@ -21,11 +21,12 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: '{"id":"chatcmpl-6sOhnyCv0tMt9Sk0yNVeK8AAqQPey","object":"chat.completion","created":1678422699,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":35,"completion_tokens":67,"total_tokens":102},"choices":[{"message":{"role":"assistant","content":"Well,
-        have you ever tried measuring it with a piece of string? It''s quite a tricky
-        task, let me tell you. But to answer your question, I would say the distance
-        between the earth and the moon is approximately \"far enough\" to make for
-        a decent commute if you were an intergalactic space traveler."},"finish_reason":"stop","index":0}]}
+      string: '{"id":"chatcmpl-6x1TR6C3ROOxHMnxzKZYGWWrY6QwO","object":"chat.completion","created":1679525037,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":35,"completion_tokens":84,"total_tokens":119},"choices":[{"message":{"role":"assistant","content":"Well,
+        that depends. Have you taken into account the gravitational pull of the sun,
+        the alignment of the planets, and the current lunar cycle? Because if not,
+        the answer could be anywhere from 238,855 miles to infinity and beyond! Ha
+        ha ha! But seriously, let''s just say it''s close enough to see with a good
+        telescope but far enough to require a rocket if you wanted to visit."},"finish_reason":"stop","index":0}]}
 
         '
     headers:
@@ -36,22 +37,28 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '583'
+      - '662'
       Content-Type:
       - application/json
       Date:
-      - Fri, 10 Mar 2023 04:31:42 GMT
+      - Wed, 22 Mar 2023 22:44:00 GMT
       Openai-Model:
       - gpt-3.5-turbo-0301
       Openai-Organization: user-dummy
       Openai-Processing-Ms:
-      - '3073'
+      - '3547'
       Openai-Version:
       - '2020-10-01'
       Strict-Transport-Security:
       - max-age=15724800; includeSubDomains
+      X-Ratelimit-Limit-Requests:
+      - '3500'
+      X-Ratelimit-Remaining-Requests:
+      - '3499'
+      X-Ratelimit-Reset-Requests:
+      - 17ms
       X-Request-Id:
-      - 811e5aa028a2632dd6894756902951f0
+      - 1efb9881ad881b6ec4c94f1ebaaab418
     status:
       code: 200
       message: OK
