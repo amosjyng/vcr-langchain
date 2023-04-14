@@ -3,7 +3,7 @@ interactions:
     body: '{"messages": [{"role": "system", "content": "Act as a comedian who does
       not give straightforward responses to anything."}, {"role": "user", "content":
       "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "max_tokens":
-      null, "stream": false, "n": 1}'
+      null, "stream": false, "n": 1, "temperature": 0.7}'
     headers:
       Accept:
       - '*/*'
@@ -12,53 +12,64 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '267'
+      - '287'
       Content-Type:
       - application/json
       User-Agent:
-      - OpenAI/v1 PythonBindings/0.27.1
+      - OpenAI/v1 PythonBindings/0.27.4
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: '{"id":"chatcmpl-6x1TR6C3ROOxHMnxzKZYGWWrY6QwO","object":"chat.completion","created":1679525037,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":35,"completion_tokens":84,"total_tokens":119},"choices":[{"message":{"role":"assistant","content":"Well,
-        that depends. Have you taken into account the gravitational pull of the sun,
-        the alignment of the planets, and the current lunar cycle? Because if not,
-        the answer could be anywhere from 238,855 miles to infinity and beyond! Ha
-        ha ha! But seriously, let''s just say it''s close enough to see with a good
-        telescope but far enough to require a rocket if you wanted to visit."},"finish_reason":"stop","index":0}]}
-
-        '
+      string: !!binary |
+        H4sIAAAAAAAAA0SPwYrbQAyG730KocteJiFpNo7jS6HQw5buraWFUhZ5rHhmPR5NZuTNpiHvXhza
+        7Unoh//Tpwv6Dhu0jtSOKSx22/r9l8fKaVXVO7tP06fj0T3++LZ7/fr5Hg1K+8xW/zaWVsYUWL1E
+        NGgzk3KHzbqq1/fbqq73BkfpOGCDfdLFZrld6JRbWaw2qzUanAr1jM0FU5Yx6ZPKwLFgs6kM/ke/
+        xdXGoIpSeEv2+6tB68RbLtj8vODI5R8zS2BskErxRSnqbChROc723zkEA4EVRgYqA5xlAnW+NODo
+        hW8rv3AGzZ47UIEU6AwEPY0McgAnqVhR60AiqGMYReIHeNC7AgSZKUAn8vu8hI+Tzn2K5cR5Bmc4
+        Tlzmzww83HVQ6Az+1mtlUqACB8rzIBgo9pRFwFKE52lM8zWCJL1AUW8HODkfGDJbrz72NxMKyVHL
+        Ci3Z4US5K0u8Gjz46It7ykxFIjZYVBIa9LHjV2xW11/Xd38AAAD//wMA5aL7Mg0CAAA=
     headers:
-      Access-Control-Allow-Origin:
-      - '*'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7b7a31385a133879-IAD
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
       - keep-alive
-      Content-Length:
-      - '662'
+      Content-Encoding:
+      - gzip
       Content-Type:
       - application/json
       Date:
-      - Wed, 22 Mar 2023 22:44:00 GMT
-      Openai-Model:
+      - Fri, 14 Apr 2023 07:21:33 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      openai-model:
       - gpt-3.5-turbo-0301
-      Openai-Organization: user-dummy
-      Openai-Processing-Ms:
-      - '3547'
-      Openai-Version:
+      openai-organization:
+      - user-ns36y3iizxjt9cbrrl4tneqp
+      openai-processing-ms:
+      - '3339'
+      openai-version:
       - '2020-10-01'
-      Strict-Transport-Security:
+      strict-transport-security:
       - max-age=15724800; includeSubDomains
-      X-Ratelimit-Limit-Requests:
+      x-ratelimit-limit-requests:
       - '3500'
-      X-Ratelimit-Remaining-Requests:
+      x-ratelimit-remaining-requests:
       - '3499'
-      X-Ratelimit-Reset-Requests:
+      x-ratelimit-reset-requests:
       - 17ms
-      X-Request-Id:
-      - 1efb9881ad881b6ec4c94f1ebaaab418
+      x-request-id:
+      - 88e53f08b5fd885f5855afd074649c2d
     status:
       code: 200
       message: OK

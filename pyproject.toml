@@ -24,6 +24,7 @@ openai = "^0.27.1"
 faiss-cpu = "^1.7.3"
 pre-commit = "^3.1.1"
 autoflake = "^2.0.1"
+tiktoken = "^0.3.3"
 
 [tool.isort]
 multi_line_output = 3
