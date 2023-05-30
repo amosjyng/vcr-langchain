@@ -8,8 +8,8 @@ packages = [{include = "vcr_langchain"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-vcrpy = "^4.2.1"
-langchain = ">=0.0.130,<0.1"
+vcrpy = "^4.3.1"
+langchain = ">=0.0.184,<0.1"
 gorilla = "^0.4.0"
 
 
@@ -51,7 +51,8 @@ markers = [
 filterwarnings = [
     "error",
     'ignore:distutils Version classes are deprecated:DeprecationWarning',
-    'ignore:unclosed <ssl.SSLSocket:ResourceWarning'
+    'ignore:unclosed <ssl.SSLSocket:ResourceWarning',
+    'ignore::sqlalchemy.exc.MovedIn20Warning'
 ]
 
 [build-system]
