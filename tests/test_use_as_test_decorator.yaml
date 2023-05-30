@@ -1,8 +1,8 @@
 interactions:
 - request:
-    body: '{"prompt": ["Tell me a surreal joke"], "model": "text-davinci-003", "temperature":
+    body: '{"prompt": ["Tell me a surreal joke"], "model": "text-ada-001", "temperature":
       0.7, "max_tokens": 256, "top_p": 1, "frequency_penalty": 0, "presence_penalty":
-      0, "n": 1, "best_of": 1, "logit_bias": {}}'
+      0, "n": 1, "logit_bias": {}}'
     headers:
       Accept:
       - '*/*'
@@ -11,43 +11,68 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '205'
+      - '187'
       Content-Type:
       - application/json
       User-Agent:
-      - OpenAI/v1 PythonBindings/0.26.4
+      - OpenAI/v1 PythonBindings/0.27.7
     method: POST
     uri: https://api.openai.com/v1/completions
   response:
     body:
-      string: '{"id":"cmpl-6fk4iGkdzMZQp8oAx6zFWKOtyYdMl","object":"text_completion","created":1675406580,"model":"text-davinci-003","choices":[{"text":"\n\nQ:
-        What did the fish say when he hit the wall?\nA: Dam!","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":5,"completion_tokens":20,"total_tokens":25}}
-
-        '
+      string: !!binary |
+        H4sIAAAAAAAAA0TPTU8CMRSF4b2/op51SQbky25MWMwCXbgwfkQMKe2FqXR6y/SSYAj/3UAMbp/z
+        bs4RwcPAtTn2Jk8xT8f17DHWH67sZjs3X+/ad6qf5/UrNHj1TU5gIHSQpeM2R5LACRquIyvkYfrj
+        6Wg4uKsmU42WPcW/vGe97VVV/9w2HBwVmM/jZYLBIi3SW/OjfPBKGlKuCW5LSbmOS7lIx9Y/nLMX
+        VhsSJXxhloY6VYKnW2iE5OkAU2lE3uSOVwUm7WPUWIcUSrPsyBZOMCjCGacvjX2xG4I5InfcZlkK
+        bykVmJHG/8Gr9u81hMXGqwyGp9PNLwAAAP//AwA0Bz5dRQEAAA==
     headers:
-      Access-Control-Allow-Origin:
-      - '*'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7cf46ffb2bfb3e69-ADL
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
       - keep-alive
-      Content-Length:
-      - '320'
+      Content-Encoding:
+      - gzip
       Content-Type:
       - application/json
       Date:
-      - Fri, 03 Feb 2023 06:43:01 GMT
-      Openai-Model:
-      - text-davinci-003
-      Openai-Organization: user-dummy
-      Openai-Processing-Ms:
-      - '1030'
-      Openai-Version:
+      - Tue, 30 May 2023 05:04:38 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - text-ada-001
+      openai-organization:
+      - user-dpc5ftw8bvmpxblb49hwviq5
+      openai-processing-ms:
+      - '408'
+      openai-version:
       - '2020-10-01'
-      Strict-Transport-Security:
+      strict-transport-security:
       - max-age=15724800; includeSubDomains
-      X-Request-Id:
-      - de406d2556d05bb4b7c924ac675540ff
+      x-ratelimit-limit-requests:
+      - '3000'
+      x-ratelimit-limit-tokens:
+      - '250000'
+      x-ratelimit-remaining-requests:
+      - '2999'
+      x-ratelimit-remaining-tokens:
+      - '249744'
+      x-ratelimit-reset-requests:
+      - 20ms
+      x-ratelimit-reset-tokens:
+      - 61ms
+      x-request-id:
+      - bf1c34a04c5e3bcd3f33059b3252a796
     status:
       code: 200
       message: OK
