@@ -1,0 +1,8 @@
+interactions:
+- request:
+    body: '{"tool_input": "https://www.google.com/"}'
+    headers: {}
+    method: POST
+    uri: tool://NavigateTool/arun
+  response: Navigating to https://www.google.com/ returned status code 200
+version: 1

@@ -936,6 +936,18 @@ files = [
 ]
 
 [[package]]
+name = "nest-asyncio"
+version = "1.5.6"
+description = "Patch asyncio to allow nested event loops"
+category = "dev"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "nest_asyncio-1.5.6-py3-none-any.whl", hash = "sha256:b9a953fb40dceaa587d109609098db21900182b16440652454a146cffb06e8b8"},
+    {file = "nest_asyncio-1.5.6.tar.gz", hash = "sha256:d267cc1ff794403f7df692964d1d2a3fa9418ffea2a3f6859a439ff482fef290"},
+]
+
+[[package]]
 name = "nodeenv"
 version = "1.8.0"
 description = "Node.js virtual environment builder"
@@ -1110,6 +1122,28 @@ docs = ["furo (>=2023.3.27)", "proselint (>=0.13)", "sphinx (>=6.2.1)", "sphinx-
 test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.3.1)", "pytest-cov (>=4)", "pytest-mock (>=3.10)"]
 
 [[package]]
+name = "playwright"
+version = "1.34.0"
+description = "A high-level API to automate web browsers"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "playwright-1.34.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:69bb9b3296e366a23a99277b4c7673cb54ce71a3f5d630f114f7701b61f98f25"},
+    {file = "playwright-1.34.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:402d946631c8458436e099d7731bbf54cf79c9e62e3acae0ea8421e72616926b"},
+    {file = "playwright-1.34.0-py3-none-macosx_11_0_universal2.whl", hash = "sha256:462251cda0fcbb273497d357dbe14b11e43ebceb0bac9b892beda041ff209aa9"},
+    {file = "playwright-1.34.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:a8ba124ea302596a03a66993cd500484fb255cbc10fe0757fa4d49f974267a80"},
+    {file = "playwright-1.34.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bf0cb6aac49d24335fe361868aea72b11f276a95e7809f1a5d1c69b4120c46ac"},
+    {file = "playwright-1.34.0-py3-none-win32.whl", hash = "sha256:c50fef189d87243cc09ae0feb8e417fbe434359ccbcc863fb19ba06d46d31c33"},
+    {file = "playwright-1.34.0-py3-none-win_amd64.whl", hash = "sha256:42e16c930e1e910461f4c551a72fc1b900f37124431bf2b6a6d9ddae70042db4"},
+]
+
+[package.dependencies]
+greenlet = "2.0.2"
+pyee = "9.0.4"
+typing-extensions = {version = "*", markers = "python_version <= \"3.8\""}
+
+[[package]]
 name = "pluggy"
 version = "1.0.0"
 description = "plugin and hook calling mechanisms for python"
@@ -1210,6 +1244,21 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pyee"
+version = "9.0.4"
+description = "A port of node.js's EventEmitter to python."
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pyee-9.0.4-py2.py3-none-any.whl", hash = "sha256:9f066570130c554e9cc12de5a9d86f57c7ee47fece163bbdaa3e9c933cfbdfa5"},
+    {file = "pyee-9.0.4.tar.gz", hash = "sha256:2770c4928abc721f46b705e6a72b0c59480c4a69c9a83ca0b00bb994f1ea4b32"},
+]
+
+[package.dependencies]
+typing-extensions = "*"
+
+[[package]]
 name = "pyflakes"
 version = "3.0.1"
 description = "passive checker of Python programs"
@@ -1243,6 +1292,25 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 
 [package.extras]
 testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
+
+[[package]]
+name = "pytest-asyncio"
+version = "0.21.0"
+description = "Pytest support for asyncio"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pytest-asyncio-0.21.0.tar.gz", hash = "sha256:2b38a496aef56f56b0e87557ec313e11e1ab9276fc3863f6a7be0f1d0e415e1b"},
+    {file = "pytest_asyncio-0.21.0-py3-none-any.whl", hash = "sha256:f2b3366b7cd501a4056858bd39349d5af19742aed2d81660b7998b6341c7eb9c"},
+]
+
+[package.dependencies]
+pytest = ">=7.0.0"
+
+[package.extras]
+docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
+testing = ["coverage (>=6.2)", "flaky (>=3.5.0)", "hypothesis (>=5.7.1)", "mypy (>=0.931)", "pytest-trio (>=0.7.0)"]
 
 [[package]]
 name = "pyyaml"
@@ -1876,4 +1944,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "dbd9c9b75bb81af447e90307e842c72decef969dab09dd5bf346ec1a11bd17b6"
+content-hash = "45091782d358b991b54910a7677caf42b962013ad8fe3da931da6d928c7db395"
