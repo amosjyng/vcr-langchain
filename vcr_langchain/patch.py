@@ -6,7 +6,13 @@ from typing import Any, Callable, Dict, Iterable, List, Optional, Type, Union
 
 import gorilla
 from langchain.python import PythonREPL
+from langchain.tools.playwright.click import ClickTool
+from langchain.tools.playwright.current_page import CurrentWebPageTool
+from langchain.tools.playwright.extract_hyperlinks import ExtractHyperlinksTool
+from langchain.tools.playwright.extract_text import ExtractTextTool
+from langchain.tools.playwright.get_elements import GetElementsTool
 from langchain.tools.playwright.navigate import NavigateTool
+from langchain.tools.playwright.navigate_back import NavigateBackTool
 from langchain.utilities.bash import BashProcess
 from vcr.cassette import Cassette
 from vcr.errors import CannotOverwriteExistingCassetteException
@@ -217,12 +223,144 @@ class NavigateToolAsyncPatch(GenericPatch):
         return arun
 
 
+class ClickToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ClickTool, "run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: ClickTool, selector: str) -> str:
+            return self.generic_override(og_self, tool_input=selector)
+
+        return run
+
+
+class ClickToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ClickTool, "arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(og_self: ClickTool, selector: str) -> str:
+            return await self.generic_override(og_self, tool_input=selector)
+
+        return arun
+
+
+class CurrentWebPageToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, CurrentWebPageTool, "run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: CurrentWebPageTool, tool_input: Dict) -> str:
+            return self.generic_override(og_self, tool_input=tool_input)
+
+        return run
+
+
+class CurrentWebPageToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, CurrentWebPageTool, "arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(og_self: CurrentWebPageTool, tool_input: Dict) -> str:
+            return await self.generic_override(og_self, tool_input=tool_input)
+
+        return arun
+
+
 def get_overridden_build(og_build: Callable) -> Callable:
     def build(og_self: CassettePatcherBuilder) -> Iterable[Any]:
         patches = [patcher(og_self._cassette) for patcher in CUSTOM_PATCHERS]
         return itertools.chain(og_build(og_self), patches)
 
     return build
+
+
+class ExtractHyperlinksToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractHyperlinksTool, "run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: ExtractHyperlinksTool, tool_input: Dict) -> str:
+            return self.generic_override(og_self, tool_input=tool_input)
+
+        return run
+
+
+class ExtractHyperlinksToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractHyperlinksTool, "arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(og_self: ExtractHyperlinksTool, tool_input: Dict) -> str:
+            return await self.generic_override(og_self, tool_input=tool_input)
+
+        return arun
+
+
+class ExtractTextToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractTextTool, "run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: ExtractTextTool, tool_input: Dict) -> str:
+            return self.generic_override(og_self, tool_input=tool_input)
+
+        return run
+
+
+class ExtractTextToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractTextTool, "arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(og_self: ExtractTextTool, tool_input: Dict) -> str:
+            return await self.generic_override(og_self, tool_input=tool_input)
+
+        return arun
+
+
+class GetElementsToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, GetElementsTool, "run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: GetElementsTool, tool_input: Dict) -> str:
+            return self.generic_override(og_self, tool_input=tool_input)
+
+        return run
+
+
+class GetElementsToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, GetElementsTool, "arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(og_self: GetElementsTool, tool_input: Dict) -> str:
+            return await self.generic_override(og_self, tool_input=tool_input)
+
+        return arun
+
+
+class NavigateBackToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, NavigateBackTool, "run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(og_self: NavigateBackTool, tool_input: Dict) -> str:
+            return self.generic_override(og_self, tool_input=tool_input)
+
+        return run
+
+
+class NavigateBackToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, NavigateBackTool, "arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(og_self: NavigateBackTool, tool_input: Dict) -> str:
+            return await self.generic_override(og_self, tool_input=tool_input)
+
+        return arun
 
 
 CassettePatcherBuilder.build = get_overridden_build(CassettePatcherBuilder.build)
@@ -233,4 +371,16 @@ add_patchers(
     BashProcessPatch,
     NavigateToolPatch,
     NavigateToolAsyncPatch,
+    ClickToolPatch,
+    ClickToolAsyncPatch,
+    CurrentWebPageToolPatch,
+    CurrentWebPageToolAsyncPatch,
+    ExtractHyperlinksToolPatch,
+    ExtractHyperlinksToolAsyncPatch,
+    ExtractTextToolPatch,
+    ExtractTextToolAsyncPatch,
+    GetElementsToolPatch,
+    GetElementsToolAsyncPatch,
+    NavigateBackToolPatch,
+    NavigateBackToolAsyncPatch,
 )

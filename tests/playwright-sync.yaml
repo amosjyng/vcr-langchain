@@ -5,4 +5,123 @@ interactions:
     method: POST
     uri: tool://NavigateTool/run
   response: Navigating to https://www.google.com/ returned status code 200
+- request:
+    body: '{"tool_input": "a"}'
+    headers: {}
+    method: POST
+    uri: tool://ClickTool/run
+  response: Clicked element 'a'
+- request:
+    body: '{"tool_input": {}}'
+    headers: {}
+    method: POST
+    uri: tool://CurrentWebPageTool/run
+  response: https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header
+- request:
+    body: '{"tool_input": {"absolute_urls": true}}'
+    headers: {}
+    method: POST
+    uri: tool://ExtractHyperlinksTool/run
+  response: '["https://about.google/", "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header#page-content",
+    "https://about.google/", "https://about.google/", "https://about.google/google-in-australia/",
+    "https://about.google/products/", "https://about.google/commitments/", "https://about.google/stories/",
+    "https://about.google/stories/year-in-search/", "https://about.google/products/",
+    "https://support.google.com/", "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://safety.google/intl/au/", "https://about.google/google-in-australia/",
+    "https://about.google/commitments/", "https://crisisresponse.google/", "https://grow.google/intl/ALL_au/",
+    "https://about.google/stories/", "https://about.google/stories/cluey-case/", "https://about.google/stories/selly-thiam-lgbtq-stories/",
+    "https://about.google/stories/prescript/", "https://about.google/stories/save-the-bees/",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header",
+    "https://blog.google/intl/en-au/", "https://instagram.com/google/", "https://www.youtube.com/user/Google",
+    "https://twitter.com/google", "https://www.facebook.com/Google", "https://www.linkedin.com/company/google",
+    "https://about.google/contact-google/", "https://abc.xyz/investor/", "https://careers.google.com/",
+    "https://about.google/locations/", "https://blog.google/intl/en-au/", "https://www.thinkwithgoogle.com/intl/en-aunz/",
+    "https://www.blog.google/press/", "https://www.blog.google/press/", "https://www.google.com/permissions/",
+    "https://about.google/appsecurity/", "https://www.google.com/about/software-principles.html",
+    "https://www.google.com/about/unwanted-software-policy.html", "https://www.google.com/about/responsible-supply-chain/",
+    "https://about.google/extended-workforce/", "https://about.google/community-guidelines/",
+    "https://about.google/how-our-business-works/", "https://www.google.org", "https://sustainability.google",
+    "https://crisisresponse.google/", "https://www.google.com/diversity/", "https://www.google.com/intl/en_au/accessibility/",
+    "https://transparencyreport.google.com/?hl=en_GB", "https://wellbeing.google",
+    "https://safety.google/", "https://about.google/human-rights/", "https://about.google/",
+    "https://support.google.com?hl=ALL", "https://www.google.com/policies/privacy/",
+    "https://www.google.com/policies/terms/"]'
+- request:
+    body: '{"tool_input": {}}'
+    headers: {}
+    method: POST
+    uri: tool://ExtractTextTool/run
+  response: "Google - About Google, Our Culture & Company News Jump to content About
+    Google in Australia Products Commitments Stories Our mission is to organise the
+    world\u2019s information and make it universally accessible and useful . Look
+    back on 2022 through the Search trends that reveal the questions, people and moments
+    that captured the world\u2019s attention. Explore the Year in Search Make life
+    easier with a little help from our products View all our products Get product
+    support Latest products news Explore how Google helps keep everyone safe online
+    Visit the Safety Centre Google in Australia See how we're contributing locally
+    Committed to significantly improving the lives of as many people as possible View
+    all our commitments Helping those affected by crises through our products, people,
+    and partners Learn more Ensuring more people have access to the skills they need
+    to succeed in a digital world Learn more People using technology to benefit others
+    Explore our stories How an online education platform connects tutors and students
+    to provide personalised learning experiences Read the story Selly Thiam uses Google
+    Search to find LGBTQ+ stories Read the story Connecting doctors to remote Australian
+    communities Read the story Meet the team using machine learning to help save the
+    world's bees Read the story Latest company news Read more on The Keyword Follow
+    us More about us Contact us Investor relations Careers Locations Blog Think with
+    Google Press room Press enquiries Images & B-roll Permissions Policy Application
+    security Software principles Unwanted software policy Responsible supply chain
+    Extended workforce Community guidelines How our business works Responsibility
+    Google.org Sustainability Crisis Response Diversity & Inclusion Accessibility
+    Transparency Digital Wellbeing Safety Centre Human Rights Help Privacy Terms"
+- request:
+    body: '{"tool_input": {"attributes": ["innerText"], "selector": "a"}}'
+    headers: {}
+    method: POST
+    uri: tool://GetElementsTool/run
+  response: "[{\"innerText\": \"Jump to content\"}, {\"innerText\": \"About\"}, {\"innerText\":
+    \"Google in Australia\"}, {\"innerText\": \"Products\"}, {\"innerText\": \"Commitments\"},
+    {\"innerText\": \"Stories\"}, {\"innerText\": \"Look back on 2022 through the
+    Search trends that reveal the questions, people and moments that captured the
+    world\u2019s attention.\\n\\nExplore the Year in Search\"}, {\"innerText\": \"View
+    all our products\"}, {\"innerText\": \"Get product support\"}, {\"innerText\":
+    \"Explore how Google helps keep everyone safe online\\n\\nVisit the Safety Centre\"},
+    {\"innerText\": \"See how we're contributing locally\"}, {\"innerText\": \"View
+    all our commitments\"}, {\"innerText\": \"Helping those affected by crises through
+    our products, people, and partners\\n\\nLearn more\"}, {\"innerText\": \"Ensuring
+    more people have access to the skills they need to succeed in a digital world\\n\\nLearn
+    more\"}, {\"innerText\": \"Explore our stories\"}, {\"innerText\": \"How an online
+    education platform connects tutors and students to provide personalised learning
+    experiences\\n\\nRead the story\"}, {\"innerText\": \"Selly Thiam uses Google
+    Search to find LGBTQ+ stories\\n\\nRead the story\"}, {\"innerText\": \"Connecting
+    doctors to remote Australian communities\\n\\nRead the story\"}, {\"innerText\":
+    \"Meet the team using machine learning to help save the world's bees\\n\\nRead
+    the story\"}, {\"innerText\": \"\\n          Read more on The Keyword\\n        \"},
+    {\"innerText\": \"Contact us\"}, {\"innerText\": \"Investor relations\"}, {\"innerText\":
+    \"Careers\"}, {\"innerText\": \"Locations\"}, {\"innerText\": \"Blog\"}, {\"innerText\":
+    \"Think with Google\"}, {\"innerText\": \"Press enquiries\"}, {\"innerText\":
+    \"Images & B-roll\"}, {\"innerText\": \"Permissions\"}, {\"innerText\": \"Application
+    security\"}, {\"innerText\": \"Software principles\"}, {\"innerText\": \"Unwanted
+    software policy\"}, {\"innerText\": \"Responsible supply chain\"}, {\"innerText\":
+    \"Extended workforce\"}, {\"innerText\": \"Community guidelines\"}, {\"innerText\":
+    \"How our business works\"}, {\"innerText\": \"Google.org\"}, {\"innerText\":
+    \"Sustainability\"}, {\"innerText\": \"Crisis Response\"}, {\"innerText\": \"Diversity
+    & Inclusion\"}, {\"innerText\": \"Accessibility\"}, {\"innerText\": \"Transparency\"},
+    {\"innerText\": \"Digital Wellbeing\"}, {\"innerText\": \"Safety Centre\"}, {\"innerText\":
+    \"Human Rights\"}, {\"innerText\": \" Help\"}, {\"innerText\": \"Privacy\"}, {\"innerText\":
+    \"Terms\"}]"
+- request:
+    body: '{"tool_input": {}}'
+    headers: {}
+    method: POST
+    uri: tool://NavigateBackTool/run
+  response: Navigated back to the previous page with URL 'https://www.google.com/'.
+    Status code 200
 version: 1
