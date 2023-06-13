@@ -2,9 +2,13 @@ import inspect
 import itertools
 import json
 import logging
-from typing import Any, Callable, Dict, Iterable, List, Optional, Type, Union
+from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Type, Union
 
 import gorilla
+from langchain.callbacks.manager import (
+    AsyncCallbackManagerForToolRun,
+    CallbackManagerForToolRun,
+)
 from langchain.python import PythonREPL
 from langchain.tools.playwright.click import ClickTool
 from langchain.tools.playwright.current_page import CurrentWebPageTool
@@ -73,11 +77,21 @@ class GenericPatch:
     generic_override: Callable
     same_signature_override: Callable
     is_async: bool
+    blacklisted_args: List[str]
 
-    def __init__(self, cassette: Cassette, cls: Type, fn_name: str):
+    def __init__(
+        self,
+        cassette: Cassette,
+        cls: Type,
+        fn_name: str,
+        blacklisted_args: Optional[List[str]] = None,
+    ):
         self.cassette = cassette
         self.cls = cls
         self.fn_name = fn_name
+        self.blacklisted_args = (
+            blacklisted_args if blacklisted_args else ["run_manager"]
+        )
 
         # if the backup for the OG function has already been set, then that most likely
         # means langchain visualizer got to it first. we'll let the visualizer call out
@@ -121,10 +135,13 @@ class GenericPatch:
         # from the same class
         tool_fn_name = self.fn_name
         fake_uri = f"tool://{tool_class_name}/{tool_fn_name}"
+        filtered_kwargs = {
+            k: v for k, v in kwargs.items() if k not in self.blacklisted_args
+        }
         return Request(
             method="POST",
             uri=fake_uri,
-            body=json.dumps(kwargs, sort_keys=True),
+            body=json.dumps(filtered_kwargs, sort_keys=True),
             headers={},
         )
 
@@ -203,66 +220,228 @@ class BashProcessPatch(GenericPatch):
 
 class NavigateToolPatch(GenericPatch):
     def __init__(self, cassette: Cassette):
-        super().__init__(cassette, NavigateTool, "run")
+        super().__init__(cassette, NavigateTool, "_run")
 
     def get_same_signature_override(self) -> Callable:
-        def run(og_self: NavigateTool, url: str) -> str:
-            return self.generic_override(og_self, tool_input=url)
+        def run(
+            og_self: NavigateTool,
+            url: str,
+            run_manager: Optional[CallbackManagerForToolRun] = None,
+        ) -> str:
+            return self.generic_override(og_self, url=url, run_manager=run_manager)
 
         return run
 
 
 class NavigateToolAsyncPatch(GenericPatch):
     def __init__(self, cassette: Cassette):
-        super().__init__(cassette, NavigateTool, "arun")
+        super().__init__(cassette, NavigateTool, "_arun")
 
     def get_same_signature_override(self) -> Callable:
-        async def arun(og_self: NavigateTool, url: str) -> str:
-            return await self.generic_override(og_self, tool_input=url)
+        async def arun(
+            og_self: NavigateTool,
+            url: str,
+            run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
+        ) -> str:
+            return await self.generic_override(
+                og_self, url=url, run_manager=run_manager
+            )
 
         return arun
 
 
 class ClickToolPatch(GenericPatch):
     def __init__(self, cassette: Cassette):
-        super().__init__(cassette, ClickTool, "run")
+        super().__init__(cassette, ClickTool, "_run")
 
     def get_same_signature_override(self) -> Callable:
-        def run(og_self: ClickTool, selector: str) -> str:
-            return self.generic_override(og_self, tool_input=selector)
+        def run(
+            og_self: ClickTool,
+            selector: str,
+            run_manager: Optional[CallbackManagerForToolRun] = None,
+        ) -> str:
+            return self.generic_override(
+                og_self, selector=selector, run_manager=run_manager
+            )
 
         return run
 
 
 class ClickToolAsyncPatch(GenericPatch):
     def __init__(self, cassette: Cassette):
-        super().__init__(cassette, ClickTool, "arun")
+        super().__init__(cassette, ClickTool, "_arun")
 
     def get_same_signature_override(self) -> Callable:
-        async def arun(og_self: ClickTool, selector: str) -> str:
-            return await self.generic_override(og_self, tool_input=selector)
+        async def arun(
+            og_self: ClickTool,
+            selector: str,
+            run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
+        ) -> str:
+            return await self.generic_override(
+                og_self, selector=selector, run_manager=run_manager
+            )
 
         return arun
 
 
 class CurrentWebPageToolPatch(GenericPatch):
     def __init__(self, cassette: Cassette):
-        super().__init__(cassette, CurrentWebPageTool, "run")
+        super().__init__(cassette, CurrentWebPageTool, "_run")
 
     def get_same_signature_override(self) -> Callable:
-        def run(og_self: CurrentWebPageTool, tool_input: Dict) -> str:
-            return self.generic_override(og_self, tool_input=tool_input)
+        def run(
+            og_self: CurrentWebPageTool,
+            run_manager: Optional[CallbackManagerForToolRun] = None,
+        ) -> str:
+            return self.generic_override(og_self, run_manager=run_manager)
 
         return run
 
 
 class CurrentWebPageToolAsyncPatch(GenericPatch):
     def __init__(self, cassette: Cassette):
-        super().__init__(cassette, CurrentWebPageTool, "arun")
+        super().__init__(cassette, CurrentWebPageTool, "_arun")
 
     def get_same_signature_override(self) -> Callable:
-        async def arun(og_self: CurrentWebPageTool, tool_input: Dict) -> str:
-            return await self.generic_override(og_self, tool_input=tool_input)
+        async def arun(
+            og_self: CurrentWebPageTool,
+            run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
+        ) -> str:
+            return await self.generic_override(og_self, run_manager=run_manager)
+
+        return arun
+
+
+class ExtractHyperlinksToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractHyperlinksTool, "_run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(
+            og_self: ExtractHyperlinksTool,
+            absolute_urls: bool = False,
+            run_manager: Optional[CallbackManagerForToolRun] = None,
+        ) -> str:
+            return self.generic_override(
+                og_self, absolute_urls=absolute_urls, run_manager=run_manager
+            )
+
+        return run
+
+
+class ExtractHyperlinksToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractHyperlinksTool, "_arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(
+            og_self: ExtractHyperlinksTool,
+            absolute_urls: bool = False,
+            run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
+        ) -> str:
+            return await self.generic_override(
+                og_self,
+                absolute_urls=absolute_urls,
+                run_manager=run_manager,
+            )
+
+        return arun
+
+
+class ExtractTextToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractTextTool, "_run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(
+            og_self: ExtractTextTool,
+            run_manager: Optional[CallbackManagerForToolRun] = None,
+        ) -> str:
+            return self.generic_override(og_self, run_manager=run_manager)
+
+        return run
+
+
+class ExtractTextToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, ExtractTextTool, "_arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(
+            og_self: ExtractTextTool,
+            run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
+        ) -> str:
+            return await self.generic_override(og_self, run_manager=run_manager)
+
+        return arun
+
+
+class GetElementsToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, GetElementsTool, "_run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(
+            og_self: GetElementsTool,
+            selector: str,
+            attributes: Sequence[str] = ["innerText"],
+            run_manager: Optional[CallbackManagerForToolRun] = None,
+        ) -> str:
+            return self.generic_override(
+                og_self,
+                selector=selector,
+                attributes=attributes,
+                run_manager=run_manager,
+            )
+
+        return run
+
+
+class GetElementsToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, GetElementsTool, "_arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(
+            og_self: GetElementsTool,
+            selector: str,
+            attributes: Sequence[str] = ["innerText"],
+            run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
+        ) -> str:
+            return await self.generic_override(
+                og_self,
+                selector=selector,
+                attributes=attributes,
+                run_manager=run_manager,
+            )
+
+        return arun
+
+
+class NavigateBackToolPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, NavigateBackTool, "_run")
+
+    def get_same_signature_override(self) -> Callable:
+        def run(
+            og_self: NavigateBackTool,
+            run_manager: Optional[CallbackManagerForToolRun] = None,
+        ) -> str:
+            return self.generic_override(og_self, run_manager=run_manager)
+
+        return run
+
+
+class NavigateBackToolAsyncPatch(GenericPatch):
+    def __init__(self, cassette: Cassette):
+        super().__init__(cassette, NavigateBackTool, "_arun")
+
+    def get_same_signature_override(self) -> Callable:
+        async def arun(
+            og_self: NavigateBackTool,
+            run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
+        ) -> str:
+            return await self.generic_override(og_self, run_manager=run_manager)
 
         return arun
 
@@ -273,94 +452,6 @@ def get_overridden_build(og_build: Callable) -> Callable:
         return itertools.chain(og_build(og_self), patches)
 
     return build
-
-
-class ExtractHyperlinksToolPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, ExtractHyperlinksTool, "run")
-
-    def get_same_signature_override(self) -> Callable:
-        def run(og_self: ExtractHyperlinksTool, tool_input: Dict) -> str:
-            return self.generic_override(og_self, tool_input=tool_input)
-
-        return run
-
-
-class ExtractHyperlinksToolAsyncPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, ExtractHyperlinksTool, "arun")
-
-    def get_same_signature_override(self) -> Callable:
-        async def arun(og_self: ExtractHyperlinksTool, tool_input: Dict) -> str:
-            return await self.generic_override(og_self, tool_input=tool_input)
-
-        return arun
-
-
-class ExtractTextToolPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, ExtractTextTool, "run")
-
-    def get_same_signature_override(self) -> Callable:
-        def run(og_self: ExtractTextTool, tool_input: Dict) -> str:
-            return self.generic_override(og_self, tool_input=tool_input)
-
-        return run
-
-
-class ExtractTextToolAsyncPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, ExtractTextTool, "arun")
-
-    def get_same_signature_override(self) -> Callable:
-        async def arun(og_self: ExtractTextTool, tool_input: Dict) -> str:
-            return await self.generic_override(og_self, tool_input=tool_input)
-
-        return arun
-
-
-class GetElementsToolPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, GetElementsTool, "run")
-
-    def get_same_signature_override(self) -> Callable:
-        def run(og_self: GetElementsTool, tool_input: Dict) -> str:
-            return self.generic_override(og_self, tool_input=tool_input)
-
-        return run
-
-
-class GetElementsToolAsyncPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, GetElementsTool, "arun")
-
-    def get_same_signature_override(self) -> Callable:
-        async def arun(og_self: GetElementsTool, tool_input: Dict) -> str:
-            return await self.generic_override(og_self, tool_input=tool_input)
-
-        return arun
-
-
-class NavigateBackToolPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, NavigateBackTool, "run")
-
-    def get_same_signature_override(self) -> Callable:
-        def run(og_self: NavigateBackTool, tool_input: Dict) -> str:
-            return self.generic_override(og_self, tool_input=tool_input)
-
-        return run
-
-
-class NavigateBackToolAsyncPatch(GenericPatch):
-    def __init__(self, cassette: Cassette):
-        super().__init__(cassette, NavigateBackTool, "arun")
-
-    def get_same_signature_override(self) -> Callable:
-        async def arun(og_self: NavigateBackTool, tool_input: Dict) -> str:
-            return await self.generic_override(og_self, tool_input=tool_input)
-
-        return arun
 
 
 CassettePatcherBuilder.build = get_overridden_build(CassettePatcherBuilder.build)

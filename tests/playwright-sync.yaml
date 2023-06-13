@@ -1,27 +1,27 @@
 interactions:
 - request:
-    body: '{"tool_input": "https://www.google.com/"}'
+    body: '{"url": "https://www.google.com/"}'
     headers: {}
     method: POST
-    uri: tool://NavigateTool/run
+    uri: tool://NavigateTool/_run
   response: Navigating to https://www.google.com/ returned status code 200
 - request:
-    body: '{"tool_input": "a"}'
+    body: '{"selector": "a"}'
     headers: {}
     method: POST
-    uri: tool://ClickTool/run
+    uri: tool://ClickTool/_run
   response: Clicked element 'a'
 - request:
-    body: '{"tool_input": {}}'
+    body: '{}'
     headers: {}
     method: POST
-    uri: tool://CurrentWebPageTool/run
+    uri: tool://CurrentWebPageTool/_run
   response: https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header
 - request:
-    body: '{"tool_input": {"absolute_urls": true}}'
+    body: '{"absolute_urls": true}'
     headers: {}
     method: POST
-    uri: tool://ExtractHyperlinksTool/run
+    uri: tool://ExtractHyperlinksTool/_run
   response: '["https://about.google/", "https://about.google/?fg=1&utm_source=google-AU&utm_medium=referral&utm_campaign=hp-header#page-content",
     "https://about.google/", "https://about.google/", "https://about.google/google-in-australia/",
     "https://about.google/products/", "https://about.google/commitments/", "https://about.google/stories/",
@@ -54,10 +54,10 @@ interactions:
     "https://support.google.com?hl=ALL", "https://www.google.com/policies/privacy/",
     "https://www.google.com/policies/terms/"]'
 - request:
-    body: '{"tool_input": {}}'
+    body: '{}'
     headers: {}
     method: POST
-    uri: tool://ExtractTextTool/run
+    uri: tool://ExtractTextTool/_run
   response: "Google - About Google, Our Culture & Company News Jump to content About
     Google in Australia Products Commitments Stories Our mission is to organise the
     world\u2019s information and make it universally accessible and useful . Look
@@ -82,10 +82,10 @@ interactions:
     Google.org Sustainability Crisis Response Diversity & Inclusion Accessibility
     Transparency Digital Wellbeing Safety Centre Human Rights Help Privacy Terms"
 - request:
-    body: '{"tool_input": {"attributes": ["innerText"], "selector": "a"}}'
+    body: '{"attributes": ["innerText"], "selector": "a"}'
     headers: {}
     method: POST
-    uri: tool://GetElementsTool/run
+    uri: tool://GetElementsTool/_run
   response: "[{\"innerText\": \"Jump to content\"}, {\"innerText\": \"About\"}, {\"innerText\":
     \"Google in Australia\"}, {\"innerText\": \"Products\"}, {\"innerText\": \"Commitments\"},
     {\"innerText\": \"Stories\"}, {\"innerText\": \"Look back on 2022 through the
@@ -118,10 +118,10 @@ interactions:
     \"Human Rights\"}, {\"innerText\": \" Help\"}, {\"innerText\": \"Privacy\"}, {\"innerText\":
     \"Terms\"}]"
 - request:
-    body: '{"tool_input": {}}'
+    body: '{}'
     headers: {}
     method: POST
-    uri: tool://NavigateBackTool/run
+    uri: tool://NavigateBackTool/_run
   response: Navigated back to the previous page with URL 'https://www.google.com/'.
     Status code 200
 version: 1
