@@ -22,7 +22,7 @@ from playwright.sync_api import Browser as SyncBrowser
 
 import vcr_langchain as vcr
 from tests import TemporaryCassettePath
-from tests.dummy import DummyAsyncBrowser, DummySyncBrowser
+from vcr_langchain.dummy import DummyAsyncBrowser, DummySyncBrowser
 
 
 @vcr.use_cassette()
@@ -113,7 +113,7 @@ def test_use_playwright_sync_tools() -> None:
 
     extract_links = ExtractHyperlinksTool.from_browser(sync_browser=browser)
     links = extract_links.run({"absolute_urls": True})
-    assert len(links) > 3000  # holy crap that's a lot of links
+    assert links.startswith('["https://about.google/", ')
 
     extract_text = ExtractTextTool.from_browser(sync_browser=browser)
     text = extract_text.run({})
@@ -155,7 +155,7 @@ async def test_use_playwright_async_tools() -> None:
 
     extract_links = ExtractHyperlinksTool.from_browser(async_browser=browser)
     links = await extract_links.arun({"absolute_urls": True})
-    assert len(links) > 3000
+    assert links.startswith('["https://about.google/", ')
 
     extract_text = ExtractTextTool.from_browser(async_browser=browser)
     text = await extract_text.arun({})
