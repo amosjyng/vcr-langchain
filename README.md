@@ -29,6 +29,8 @@ The next time you run it:
 
 For more examples, see [the usages test file](tests/test_usage.py).
 
+If you're using the Langchain Playwright browser tools, you can also use [`get_sync_test_browser` and `get_async_test_browser`](/vcr_langchain/dummy.py) to automatically get real browsers during recording but fake browsers on replay. This allows you to skip downloading and installing Playwright browsers on your remote CI server, while still being able to re-record sessions in a real browser when developing locally.
+
 ### Pitfalls
 
 Note that tools, if initialized outside of the `vcr_langchain` decorator, will not have recording capabilities patched in. This is true even if an agent using those tools is initialized within the decorator.

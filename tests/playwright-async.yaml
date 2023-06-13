@@ -103,19 +103,19 @@ interactions:
     Search to find LGBTQ+ stories\\n\\nRead the story\"}, {\"innerText\": \"Connecting
     doctors to remote Australian communities\\n\\nRead the story\"}, {\"innerText\":
     \"Meet the team using machine learning to help save the world's bees\\n\\nRead
-    the story\"}, {\"innerText\": \"Read more on The Keyword\"}, {\"innerText\": \"Contact
-    us\"}, {\"innerText\": \"Investor relations\"}, {\"innerText\": \"Careers\"},
-    {\"innerText\": \"Locations\"}, {\"innerText\": \"Blog\"}, {\"innerText\": \"Think
-    with Google\"}, {\"innerText\": \"Press enquiries\"}, {\"innerText\": \"Images
-    & B-roll\"}, {\"innerText\": \"Permissions\"}, {\"innerText\": \"Application security\"},
-    {\"innerText\": \"Software principles\"}, {\"innerText\": \"Unwanted software
-    policy\"}, {\"innerText\": \"Responsible supply chain\"}, {\"innerText\": \"Extended
-    workforce\"}, {\"innerText\": \"Community guidelines\"}, {\"innerText\": \"How
-    our business works\"}, {\"innerText\": \"Google.org\"}, {\"innerText\": \"Sustainability\"},
-    {\"innerText\": \"Crisis Response\"}, {\"innerText\": \"Diversity & Inclusion\"},
-    {\"innerText\": \"Accessibility\"}, {\"innerText\": \"Transparency\"}, {\"innerText\":
-    \"Digital Wellbeing\"}, {\"innerText\": \"Safety Centre\"}, {\"innerText\": \"Human
-    Rights\"}, {\"innerText\": \" Help\"}, {\"innerText\": \"Privacy\"}, {\"innerText\":
+    the story\"}, {\"innerText\": \"\\n          Read more on The Keyword\\n        \"},
+    {\"innerText\": \"Contact us\"}, {\"innerText\": \"Investor relations\"}, {\"innerText\":
+    \"Careers\"}, {\"innerText\": \"Locations\"}, {\"innerText\": \"Blog\"}, {\"innerText\":
+    \"Think with Google\"}, {\"innerText\": \"Press enquiries\"}, {\"innerText\":
+    \"Images & B-roll\"}, {\"innerText\": \"Permissions\"}, {\"innerText\": \"Application
+    security\"}, {\"innerText\": \"Software principles\"}, {\"innerText\": \"Unwanted
+    software policy\"}, {\"innerText\": \"Responsible supply chain\"}, {\"innerText\":
+    \"Extended workforce\"}, {\"innerText\": \"Community guidelines\"}, {\"innerText\":
+    \"How our business works\"}, {\"innerText\": \"Google.org\"}, {\"innerText\":
+    \"Sustainability\"}, {\"innerText\": \"Crisis Response\"}, {\"innerText\": \"Diversity
+    & Inclusion\"}, {\"innerText\": \"Accessibility\"}, {\"innerText\": \"Transparency\"},
+    {\"innerText\": \"Digital Wellbeing\"}, {\"innerText\": \"Safety Centre\"}, {\"innerText\":
+    \"Human Rights\"}, {\"innerText\": \" Help\"}, {\"innerText\": \"Privacy\"}, {\"innerText\":
     \"Terms\"}]"
 - request:
     body: '{"tool_input": {}}'
