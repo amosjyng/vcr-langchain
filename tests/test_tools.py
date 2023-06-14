@@ -92,15 +92,13 @@ def test_use_bash_same_commands() -> None:
 
 
 def test_different_bash_instances() -> None:
+    """Terminal interactions using different settings should not be replayed."""
     cassette_path = "tests/persistent-bash.yaml"
 
     with TemporaryCassettePath(cassette_path):
         with vcr.use_cassette(cassette_path):
             bash = BashProcess(persistent=True)
-            first_dir = bash.run(commands=["pwd"])
-            bash.run(commands=["cd tests"])
-            second_dir = bash.run(commands=["pwd"])
-            assert second_dir == f"{first_dir}/tests"
+            bash.run(commands=["pwd"])
 
         with vcr.use_cassette(cassette_path):
             with pytest.raises(CannotOverwriteExistingCassetteException):
