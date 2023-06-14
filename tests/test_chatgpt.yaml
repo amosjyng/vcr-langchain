@@ -3,37 +3,26 @@ interactions:
     body: '{"messages": [{"role": "system", "content": "Act as a comedian who does
       not give straightforward responses to anything."}, {"role": "user", "content":
       "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "max_tokens":
-      null, "stream": false, "n": 1, "temperature": 0.7}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '287'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - OpenAI/v1 PythonBindings/0.27.4
+      null, "stream": false, "n": 1, "temperature": 0.0}'
+    headers: {}
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA0SPwYrbQAyG730KocteJiFpNo7jS6HQw5buraWFUhZ5rHhmPR5NZuTNpiHvXhza
-        7Unoh//Tpwv6Dhu0jtSOKSx22/r9l8fKaVXVO7tP06fj0T3++LZ7/fr5Hg1K+8xW/zaWVsYUWL1E
-        NGgzk3KHzbqq1/fbqq73BkfpOGCDfdLFZrld6JRbWaw2qzUanAr1jM0FU5Yx6ZPKwLFgs6kM/ke/
-        xdXGoIpSeEv2+6tB68RbLtj8vODI5R8zS2BskErxRSnqbChROc723zkEA4EVRgYqA5xlAnW+NODo
-        hW8rv3AGzZ47UIEU6AwEPY0McgAnqVhR60AiqGMYReIHeNC7AgSZKUAn8vu8hI+Tzn2K5cR5Bmc4
-        Tlzmzww83HVQ6Az+1mtlUqACB8rzIBgo9pRFwFKE52lM8zWCJL1AUW8HODkfGDJbrz72NxMKyVHL
-        Ci3Z4US5K0u8Gjz46It7ykxFIjZYVBIa9LHjV2xW11/Xd38AAAD//wMA5aL7Mg0CAAA=
+        H4sIAAAAAAAAA2xQXWsTQRR9319xmJe+JCExJk3zUhREBIsKakUr5Wb3Jjtmdu525m7WpeS/y0xa
+        g+DjnDPnno/HAjC2MmuYsiYtm9aNLz/Jt14uP7Zf3j98p5uvb+vD54UMt8Nqv2rMKClk84tLfVZN
+        Smlax2rFn+gyMCmnq7Plarl8sZitXmaikYpdku1aHc8ni7F2YSPj6Xw6Oym7SDs2azwWAGDaIE2r
+        9yp79tGsMV+OTsTZ8Uwu50+kipI741dXBXA8BavFlpzAH/nrySYF4/iPcwaDuIQYitFGJa9mdCZL
+        8co+b3DLzo2gNelFBGGX2uOh45jyTfBOEZicG1Bxy76KEI9aegzSoeKt9Yw7s6UwuTN4FRg9Q8nt
+        rd+BNtIpqmxfMqxHYx1HSMDeOmlYOcRrfAig/wm1ZnAjKQe585kNa8/sM/2GgtYgX+XXjYi/xmsu
+        qYsMx6nRhnP+1JCHiwOjpgpRGkbXxqyspPcxhdOabUBgR8ky1raFHDjk0wNTiBPztODxeUqztd7G
+        +j4wRfFpzqjS/l3aWF/xb7PGNAPHAvhZHIs/AAAA//8DAGd7tVi4AgAA
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7b7a31385a133879-IAD
+      - 7d6714471d7d3e6a-ADL
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -43,33 +32,13 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 14 Apr 2023 07:21:33 GMT
-      Server:
-      - cloudflare
+      - Tue, 13 Jun 2023 02:59:47 GMT
       Transfer-Encoding:
       - chunked
-      access-control-allow-origin:
-      - '*'
-      alt-svc:
-      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
       openai-model:
       - gpt-3.5-turbo-0301
-      openai-organization:
-      - user-ns36y3iizxjt9cbrrl4tneqp
       openai-processing-ms:
-      - '3339'
-      openai-version:
-      - '2020-10-01'
-      strict-transport-security:
-      - max-age=15724800; includeSubDomains
-      x-ratelimit-limit-requests:
-      - '3500'
-      x-ratelimit-remaining-requests:
-      - '3499'
-      x-ratelimit-reset-requests:
-      - 17ms
-      x-request-id:
-      - 88e53f08b5fd885f5855afd074649c2d
+      - '3129'
     status:
       code: 200
       message: OK

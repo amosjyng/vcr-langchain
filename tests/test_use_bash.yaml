@@ -1,10 +1,16 @@
 interactions:
 - request:
     body: '{"commands": "date"}'
-    headers: {}
+    headers:
+      persistent:
+      - false
+      return_err_output:
+      - false
+      strip_newlines:
+      - false
     method: POST
     uri: tool://BashProcess/run
-  response: 'Fri Feb  3 13:05:45 +07 2023
+  response: 'Tue Jun 13 12:59:50 AEST 2023
 
     '
 version: 1

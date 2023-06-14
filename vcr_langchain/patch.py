@@ -2,7 +2,18 @@ import inspect
 import itertools
 import json
 import logging
-from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Type, Union
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Iterable,
+    List,
+    Optional,
+    Sequence,
+    Type,
+    Union,
+    cast,
+)
 
 import gorilla
 from langchain.callbacks.manager import (
@@ -123,7 +134,18 @@ class GenericPatch:
             settings=gorilla.Settings(store_hit=True, allow_hit=not viz_was_here),
         )
 
-    def get_request(self, kwargs: Dict[str, Any]) -> Request:
+    def get_meta_information(self, og_self: Any) -> Dict[str, Any]:
+        """
+        Override this function to include meta information about the tool.
+
+        This allows you to differentiate between different tool configurations and
+        ensure that they are not accidentally mixed. For example, if you record sessions
+        with a persistent terminal but then switch to using an ephemeral one, the switch
+        will invalidate all the responses from the persistent terminal.
+        """
+        return {}
+
+    def get_request(self, og_self: Any, kwargs: Dict[str, Any]) -> Request:
         """
         Build the request in a consistently repeatable manner.
 
@@ -142,7 +164,7 @@ class GenericPatch:
             method="POST",
             uri=fake_uri,
             body=json.dumps(filtered_kwargs, sort_keys=True),
-            headers={},
+            headers=self.get_meta_information(og_self),
         )
 
     def get_generic_override_fn(self) -> Callable:
@@ -153,7 +175,7 @@ class GenericPatch:
             As mentioned above, only kwargs are allowed to ensure that all arguments get
             serialized properly for caching.
             """
-            request = self.get_request(kwargs)
+            request = self.get_request(og_self, kwargs)
             cached_response = lookup(self.cassette, request)
             if cached_response is not None:
                 return cached_response
@@ -172,7 +194,7 @@ class GenericPatch:
             As mentioned above, only kwargs are allowed to ensure that all arguments get
             serialized properly for caching.
             """
-            request = self.get_request(kwargs)
+            request = self.get_request(og_self, kwargs)
             cached_response = lookup(self.cassette, request)
             if cached_response is not None:
                 return cached_response
@@ -209,6 +231,14 @@ class PythonREPLPatch(GenericPatch):
 class BashProcessPatch(GenericPatch):
     def __init__(self, cassette: Cassette):
         super().__init__(cassette, BashProcess, "run")
+
+    def get_meta_information(self, og_self: Any) -> Dict[str, Any]:
+        bash_process = cast(BashProcess, og_self)
+        return {
+            "persistent": bash_process.process is not None,
+            "strip_newlines": bash_process.strip_newlines,
+            "return_err_output": bash_process.return_err_output,
+        }
 
     def get_same_signature_override(self) -> Callable:
         def run(og_self: BashProcess, commands: Union[str, List[str]]) -> str:

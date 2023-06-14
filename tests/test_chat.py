@@ -19,9 +19,9 @@ def test_chatgpt() -> None:
             HumanMessagePromptTemplate.from_template("{question}"),
         ]
     )
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo")
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
     assert llm(
         chat_prompt.format_prompt(
             question="How far away is the earth from the moon?"
         ).to_messages()
-    ).content.endswith("while reciting the alphabet backwards.")
+    ).content.endswith("relationship over the years.")
