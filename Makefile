@@ -24,7 +24,7 @@ clean:
 	find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 
 clean-tests:
-	find . -name "*.yaml" -type f | xargs rm -f
+	find tests/ -name "*.yaml" -type f | xargs rm -f
 
 upgrade-langchain:
 	poetry add langchain@latest
