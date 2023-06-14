@@ -1,6 +1,7 @@
 import os
 
 import nest_asyncio
+import pytest
 from langchain.python import PythonREPL
 from langchain.serpapi import SerpAPIWrapper
 from langchain.tools.playwright import (
@@ -19,6 +20,7 @@ from langchain.tools.playwright.utils import (
 from langchain.utilities.bash import BashProcess
 from playwright.async_api import Browser as AsyncBrowser
 from playwright.sync_api import Browser as SyncBrowser
+from vcr.errors import CannotOverwriteExistingCassetteException
 
 import vcr_langchain as vcr
 from tests import TemporaryCassettePath
@@ -61,7 +63,7 @@ def test_use_python_repl_regularly() -> None:
 @vcr.use_cassette()
 def test_use_bash() -> None:
     time = BashProcess().run("date")
-    assert time == "Fri Feb  3 13:05:45 +07 2023\n"
+    assert time == "Tue Jun 13 12:59:50 AEST 2023\n"
 
 
 @vcr.use_cassette()
@@ -87,6 +89,23 @@ def test_use_bash_same_commands() -> None:
     new_results = bash.run(f"ls {test_filename}")
     assert new_results == "tests/bsdf\n"
     bash.run(f"rm {test_filename}")
+
+
+def test_different_bash_instances() -> None:
+    cassette_path = "tests/persistent-bash.yaml"
+
+    with TemporaryCassettePath(cassette_path):
+        with vcr.use_cassette(cassette_path):
+            bash = BashProcess(persistent=True)
+            first_dir = bash.run(commands=["pwd"])
+            bash.run(commands=["cd tests"])
+            second_dir = bash.run(commands=["pwd"])
+            assert second_dir == f"{first_dir}/tests"
+
+        with vcr.use_cassette(cassette_path):
+            with pytest.raises(CannotOverwriteExistingCassetteException):
+                bash = BashProcess(persistent=False)
+                bash.run(commands=["pwd"])
 
 
 @vcr.use_cassette(path="tests/playwright-sync.yaml")

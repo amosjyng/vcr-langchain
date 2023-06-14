@@ -3,34 +3,23 @@ interactions:
     body: '{"prompt": ["Tell me a real joke"], "model": "text-ada-001", "temperature":
       0.7, "max_tokens": 256, "top_p": 1, "frequency_penalty": 0, "presence_penalty":
       0, "n": 1, "logit_bias": {}}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '184'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - OpenAI/v1 PythonBindings/0.27.7
+    headers: {}
     method: POST
     uri: https://api.openai.com/v1/completions
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA0TPwU4CMRSF4b1PUc+6JAMygt0YY1yoLEwwwSiGlPYyU+n0NtNLgiG8u4EY3X7n
-        35wDgoeB63IcTGYxT2ebxdO8Wb/N6139+PLO96G6a2YPz9Dg9Rc5gYHQXlaOuxxJAidouJ6skIcZ
-        Xk/r8eiqmkw1OvYUf/OB9XZQVcNT23JwVGA+DucJBsu0TIv2W/nglbSkXBvclpJyPZdylp6tvz1l
-        r6waEiV8ZpaWelWCp0tohORpD1NpRG5yz+sCk3YxamxCCqVd9WQLJxgU4Yzjp8au2IZgDsg9d1lW
-        wltKBabW+D/4p8MbDWGx8U9G4+Px4gcAAP//AwChVk9jRQEAAA==
+        H4sIAAAAAAAAA0SQTUsDMRCG7/srxpwt7JZ+2L0IHgWhVkXESkmT6W7cbGZJptha+t8l6dq95PC8
+        H/OSUwYgjBYlCNV2djR/po+Hn/mq2VWT391xnu9fFC8f35arJ8niNrpp+42KY4LxwBtFbWeRDbmL
+        rDxKxthYzO5ms/G0WCyS0JJG+x8bSS1HeV70mZqMwiBK+MwAAE7phYs1RtZu7d7rI2ijgWsEVRvV
+        oAPlKYREPEl9H22vBBUyMCVMXKOHYDTepFOp1TiNB1FCfiWWqs7TNi5we2uvfGecCfXGowzk4pDA
+        1ImknjOAr7R+H2SFouxXi85T2/GGqUEXC6eXNjF81KAVi15kYmkHPp5k8cI5+wMAAP//AwBl/f+T
+        oAEAAA==
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7cf470005cea3e75-ADL
+      - 7d6714a71ebc3e5e-ADL
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -40,39 +29,13 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 30 May 2023 05:04:39 GMT
-      Server:
-      - cloudflare
+      - Tue, 13 Jun 2023 02:59:59 GMT
       Transfer-Encoding:
       - chunked
-      access-control-allow-origin:
-      - '*'
-      alt-svc:
-      - h3=":443"; ma=86400
       openai-model:
       - text-ada-001
-      openai-organization:
-      - user-dpc5ftw8bvmpxblb49hwviq5
       openai-processing-ms:
-      - '352'
-      openai-version:
-      - '2020-10-01'
-      strict-transport-security:
-      - max-age=15724800; includeSubDomains
-      x-ratelimit-limit-requests:
-      - '3000'
-      x-ratelimit-limit-tokens:
-      - '250000'
-      x-ratelimit-remaining-requests:
-      - '2999'
-      x-ratelimit-remaining-tokens:
-      - '249744'
-      x-ratelimit-reset-requests:
-      - 20ms
-      x-ratelimit-reset-tokens:
-      - 61ms
-      x-request-id:
-      - ab909ff50b047e975c3f4fa7007e530c
+      - '161'
     status:
       code: 200
       message: OK

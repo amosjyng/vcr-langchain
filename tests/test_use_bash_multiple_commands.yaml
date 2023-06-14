@@ -1,7 +1,13 @@
 interactions:
 - request:
     body: '{"commands": ["touch tests/asdf", "ls tests/asdf", "rm tests/asdf"]}'
-    headers: {}
+    headers:
+      persistent:
+      - false
+      return_err_output:
+      - false
+      strip_newlines:
+      - false
     method: POST
     uri: tool://BashProcess/run
   response: 'tests/asdf

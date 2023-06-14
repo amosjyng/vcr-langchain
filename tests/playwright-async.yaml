@@ -91,7 +91,7 @@ interactions:
     {\"innerText\": \"Stories\"}, {\"innerText\": \"Look back on 2022 through the
     Search trends that reveal the questions, people and moments that captured the
     world\u2019s attention.\\n\\nExplore the Year in Search\"}, {\"innerText\": \"View
-    all our products\"}, {\"innerText\": \"Get product support\"}, {\"innerText\":
+    all our products \"}, {\"innerText\": \"Get product support\"}, {\"innerText\":
     \"Explore how Google helps keep everyone safe online\\n\\nVisit the Safety Centre\"},
     {\"innerText\": \"See how we're contributing locally\"}, {\"innerText\": \"View
     all our commitments\"}, {\"innerText\": \"Helping those affected by crises through
@@ -103,19 +103,19 @@ interactions:
     Search to find LGBTQ+ stories\\n\\nRead the story\"}, {\"innerText\": \"Connecting
     doctors to remote Australian communities\\n\\nRead the story\"}, {\"innerText\":
     \"Meet the team using machine learning to help save the world's bees\\n\\nRead
-    the story\"}, {\"innerText\": \"\\n          Read more on The Keyword\\n        \"},
-    {\"innerText\": \"Contact us\"}, {\"innerText\": \"Investor relations\"}, {\"innerText\":
-    \"Careers\"}, {\"innerText\": \"Locations\"}, {\"innerText\": \"Blog\"}, {\"innerText\":
-    \"Think with Google\"}, {\"innerText\": \"Press enquiries\"}, {\"innerText\":
-    \"Images & B-roll\"}, {\"innerText\": \"Permissions\"}, {\"innerText\": \"Application
-    security\"}, {\"innerText\": \"Software principles\"}, {\"innerText\": \"Unwanted
-    software policy\"}, {\"innerText\": \"Responsible supply chain\"}, {\"innerText\":
-    \"Extended workforce\"}, {\"innerText\": \"Community guidelines\"}, {\"innerText\":
-    \"How our business works\"}, {\"innerText\": \"Google.org\"}, {\"innerText\":
-    \"Sustainability\"}, {\"innerText\": \"Crisis Response\"}, {\"innerText\": \"Diversity
-    & Inclusion\"}, {\"innerText\": \"Accessibility\"}, {\"innerText\": \"Transparency\"},
-    {\"innerText\": \"Digital Wellbeing\"}, {\"innerText\": \"Safety Centre\"}, {\"innerText\":
-    \"Human Rights\"}, {\"innerText\": \" Help\"}, {\"innerText\": \"Privacy\"}, {\"innerText\":
+    the story\"}, {\"innerText\": \"Read more on The Keyword\"}, {\"innerText\": \"Contact
+    us\"}, {\"innerText\": \"Investor relations\"}, {\"innerText\": \"Careers\"},
+    {\"innerText\": \"Locations\"}, {\"innerText\": \"Blog\"}, {\"innerText\": \"Think
+    with Google\"}, {\"innerText\": \"Press enquiries\"}, {\"innerText\": \"Images
+    & B-roll\"}, {\"innerText\": \"Permissions\"}, {\"innerText\": \"Application security\"},
+    {\"innerText\": \"Software principles\"}, {\"innerText\": \"Unwanted software
+    policy\"}, {\"innerText\": \"Responsible supply chain\"}, {\"innerText\": \"Extended
+    workforce\"}, {\"innerText\": \"Community guidelines\"}, {\"innerText\": \"How
+    our business works\"}, {\"innerText\": \"Google.org\"}, {\"innerText\": \"Sustainability\"},
+    {\"innerText\": \"Crisis Response\"}, {\"innerText\": \"Diversity & Inclusion\"},
+    {\"innerText\": \"Accessibility\"}, {\"innerText\": \"Transparency\"}, {\"innerText\":
+    \"Digital Wellbeing\"}, {\"innerText\": \"Safety Centre\"}, {\"innerText\": \"Human
+    Rights\"}, {\"innerText\": \" Help\"}, {\"innerText\": \"Privacy\"}, {\"innerText\":
     \"Terms\"}]"
 - request:
     body: '{}'
