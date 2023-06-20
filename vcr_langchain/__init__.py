@@ -38,6 +38,7 @@ default_vcr = VCR(
         # OpenAI request headers we don't want
         "authorization",
         "X-OpenAI-Client-User-Agent",
+        "OpenAI-Organization",
     ],
     filter_query_parameters=["api_key"],
     before_record_response=scrub_header(
