@@ -17,7 +17,7 @@ from langchain.tools.playwright.utils import (
     create_async_playwright_browser,
     create_sync_playwright_browser,
 )
-from langchain.utilities.bash import BashProcess
+from langchain_experimental.llm_bash.base import BashProcess
 from playwright.async_api import Browser as AsyncBrowser
 from playwright.sync_api import Browser as SyncBrowser
 from vcr.errors import CannotOverwriteExistingCassetteException
