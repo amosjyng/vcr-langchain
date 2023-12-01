@@ -36,6 +36,7 @@ default_vcr = VCR(
         "Content-Length",
         "Content-Type",
         # OpenAI request headers we don't want
+        "Cookie",
         "authorization",
         "X-OpenAI-Client-User-Agent",
         "OpenAI-Organization",
@@ -44,6 +45,7 @@ default_vcr = VCR(
     before_record_response=scrub_header(
         [
             # OpenAI response headers we don't want
+            "Set-Cookie",
             "Server",
             "access-control-allow-origin",
             "alt-svc",

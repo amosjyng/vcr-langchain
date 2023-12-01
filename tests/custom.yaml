@@ -1,25 +1,26 @@
 interactions:
 - request:
     body: '{"prompt": ["Tell me a real joke"], "model": "text-ada-001", "temperature":
-      0.7, "max_tokens": 256, "top_p": 1, "frequency_penalty": 0, "presence_penalty":
-      0, "n": 1, "logit_bias": {}}'
+      0.7, "top_p": 1, "frequency_penalty": 0, "presence_penalty": 0, "n": 1, "logit_bias":
+      {}, "max_tokens": 256}'
     headers: {}
     method: POST
     uri: https://api.openai.com/v1/completions
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA0SQTUsDMRCG7/srxpwt7JZ+2L0IHgWhVkXESkmT6W7cbGZJptha+t8l6dq95PC8
-        H/OSUwYgjBYlCNV2djR/po+Hn/mq2VWT391xnu9fFC8f35arJ8niNrpp+42KY4LxwBtFbWeRDbmL
-        rDxKxthYzO5ms/G0WCyS0JJG+x8bSS1HeV70mZqMwiBK+MwAAE7phYs1RtZu7d7rI2ijgWsEVRvV
-        oAPlKYREPEl9H22vBBUyMCVMXKOHYDTepFOp1TiNB1FCfiWWqs7TNi5we2uvfGecCfXGowzk4pDA
-        1ImknjOAr7R+H2SFouxXi85T2/GGqUEXC6eXNjF81KAVi15kYmkHPp5k8cI5+wMAAP//AwBl/f+T
-        oAEAAA==
+        H4sIAAAAAAAAA0RQTU8bMRC9768YfCbJbrqIsBduiFatqkqIohIUOfZkPeD1uPYkDUL898qbQC5z
+        eF/zZt4qAPVPp0ChVx2oO0cZBrboYYcpEwegDBZjQqMF7RR+UJ+0IKxxwwnhmw5bnV6hPYd5PW9B
+        GPSOyYKlnLZRSgJvIGPakcEpfEedAgzF6kRi7maz6LVsOA1Tjhg0TQ0PM8smzz7WEoeszktTsqWk
+        GaKfLH4Jxa/h8nmxiDfyM5ovf/bO39/eP9Tm70HN62c0UhyCe1kZHqLHknagTcJykuqguaybdt60
+        zcVIjPd/2Cba6kldN0ePYzKYVQePFQDA2zjhIC2WZViG3+4VLFkQh2AcmRcMYBLnPCKJtb0usjuG
+        HqV8rMAsDhNksng2rhpTKVjcqw7qT8RzHxOvS4Ow9f4T31Cg7FYJdeZQimThqEb2vQJ4Gttvs+5R
+        dcfWKiYeoqyEXzCUwItDmjo96sQ1V0dSWLQ/4fO2Khveq/8AAAD//wMAMRQ4ekoCAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d6714a71ebc3e5e-ADL
+      - 82ea2867eb25ef10-PDX
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -29,13 +30,19 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 13 Jun 2023 02:59:59 GMT
+      - Fri, 01 Dec 2023 09:03:36 GMT
       Transfer-Encoding:
       - chunked
       openai-model:
       - text-ada-001
       openai-processing-ms:
-      - '161'
+      - '412'
+      x-ratelimit-limit-tokens_usage_based:
+      - '250000'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '249744'
+      x-ratelimit-reset-tokens_usage_based:
+      - 61ms
     status:
       code: 200
       message: OK

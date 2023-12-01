@@ -17,4 +17,5 @@ class TemporaryCassettePath:
             assert os.path.isfile(self.cassette_path)
         finally:
             # remove it for future testing
-            os.remove(self.cassette_path)
+            if os.path.isfile(self.cassette_path):
+                os.remove(self.cassette_path)

@@ -2,27 +2,29 @@ interactions:
 - request:
     body: '{"messages": [{"role": "system", "content": "Act as a comedian who does
       not give straightforward responses to anything."}, {"role": "user", "content":
-      "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "max_tokens":
-      null, "stream": false, "n": 1, "temperature": 0.0}'
+      "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "stream":
+      false, "n": 1, "temperature": 0.0}'
     headers: {}
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA2xQXWsTQRR9319xmJe+JCExJk3zUhREBIsKakUr5Wb3Jjtmdu525m7WpeS/y0xa
-        g+DjnDPnno/HAjC2MmuYsiYtm9aNLz/Jt14uP7Zf3j98p5uvb+vD54UMt8Nqv2rMKClk84tLfVZN
-        Smlax2rFn+gyMCmnq7Plarl8sZitXmaikYpdku1aHc8ni7F2YSPj6Xw6Oym7SDs2azwWAGDaIE2r
-        9yp79tGsMV+OTsTZ8Uwu50+kipI741dXBXA8BavFlpzAH/nrySYF4/iPcwaDuIQYitFGJa9mdCZL
-        8co+b3DLzo2gNelFBGGX2uOh45jyTfBOEZicG1Bxy76KEI9aegzSoeKt9Yw7s6UwuTN4FRg9Q8nt
-        rd+BNtIpqmxfMqxHYx1HSMDeOmlYOcRrfAig/wm1ZnAjKQe585kNa8/sM/2GgtYgX+XXjYi/xmsu
-        qYsMx6nRhnP+1JCHiwOjpgpRGkbXxqyspPcxhdOabUBgR8ky1raFHDjk0wNTiBPztODxeUqztd7G
-        +j4wRfFpzqjS/l3aWF/xb7PGNAPHAvhZHIs/AAAA//8DAGd7tVi4AgAA
+        H4sIAAAAAAAAA3RTy27bMBC8+ysmuvQiG3bsNIFvPRRoUPSR5pBDUARrai0xprgqdxVXDfLvBWUn
+        aQ49iBC5M6vZ4ehxAhS+KtYoXEPm2i5ML67s/mH+iebnm+/V9aX8+nx9cRb7bz/C7uqmKDNDNvfs
+        7Jk1c9J2gc1LPJRdYjLOXRfn88XqdLG6WI6FVioOmVZ3Nl3OzqbWp41M5+8XyyOzEe9YizVuJwDw
+        OK5ZY6z4d7HGvHw+aVmVai7WLyCgSBLySUGqXo2iFeVr0Uk0jqPsD00JaxhsnCIFVBQdY8O2Z474
+        SMkaUKxGzBeReIIbDqHEID2UuYS3d4ooBlKoz+Pnt5ZJ++RjPRKrUYJj7H1uh9QHTpAEglHHRzTP
+        8FVKxPE5wWVu3EpiBL9jEJxo6x1qahmyReMrnlKspsq8m+FaWjbfsr5IHXkKE3SBBjSUqryp2caJ
+        WnlgBSF4s8DY5lE5gfY0lCNAxv2hp7fMU1AIcPJnGAEa+7oOrOg7uCCa0XLwLOspETjPcN+rQWmA
+        NWRv/fi/z/AKJ3G8ujDANRRrH+sSO+Yu+9orJEL6/E3Wo13PTnFgNU8BRrGWEhT2NCh8RCs5nbPi
+        GIanlxRtffTa3CUmlZiToSbdAfY0AX6OqezfBK3okrSd3ZnsOOaoLleHdsXrf/BaXJweI1uYGIV/
+        CmeryVFJoYMat3dbH2tOXfJjSGMfwuRp8hcAAP//AwAcTh2HowMAAA==
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d6714471d7d3e6a-ADL
+      - 82ea2a0fbfdaef24-PDX
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -32,13 +34,19 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 13 Jun 2023 02:59:47 GMT
+      - Fri, 01 Dec 2023 09:04:56 GMT
       Transfer-Encoding:
       - chunked
       openai-model:
-      - gpt-3.5-turbo-0301
+      - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '3129'
+      - '13293'
+      x-ratelimit-limit-tokens_usage_based:
+      - '60000'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '59953'
+      x-ratelimit-reset-tokens_usage_based:
+      - 47ms
     status:
       code: 200
       message: OK
