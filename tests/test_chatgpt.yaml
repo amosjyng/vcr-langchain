@@ -2,29 +2,46 @@ interactions:
 - request:
     body: '{"messages": [{"role": "system", "content": "Act as a comedian who does
       not give straightforward responses to anything."}, {"role": "user", "content":
-      "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "stream":
-      false, "n": 1, "temperature": 0.0}'
-    headers: {}
+      "How far away is the earth from the moon?"}], "model": "gpt-3.5-turbo", "n":
+      1, "stream": false, "temperature": 0.0}'
+    headers:
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.6.1
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.4
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
-    body:
-      string: !!binary |
-        H4sIAAAAAAAAA3RTy27bMBC8+ysmuvQiG3bsNIFvPRRoUPSR5pBDUARrai0xprgqdxVXDfLvBWUn
-        aQ49iBC5M6vZ4ehxAhS+KtYoXEPm2i5ML67s/mH+iebnm+/V9aX8+nx9cRb7bz/C7uqmKDNDNvfs
-        7Jk1c9J2gc1LPJRdYjLOXRfn88XqdLG6WI6FVioOmVZ3Nl3OzqbWp41M5+8XyyOzEe9YizVuJwDw
-        OK5ZY6z4d7HGvHw+aVmVai7WLyCgSBLySUGqXo2iFeVr0Uk0jqPsD00JaxhsnCIFVBQdY8O2Z474
-        SMkaUKxGzBeReIIbDqHEID2UuYS3d4ooBlKoz+Pnt5ZJ++RjPRKrUYJj7H1uh9QHTpAEglHHRzTP
-        8FVKxPE5wWVu3EpiBL9jEJxo6x1qahmyReMrnlKspsq8m+FaWjbfsr5IHXkKE3SBBjSUqryp2caJ
-        WnlgBSF4s8DY5lE5gfY0lCNAxv2hp7fMU1AIcPJnGAEa+7oOrOg7uCCa0XLwLOspETjPcN+rQWmA
-        NWRv/fi/z/AKJ3G8ujDANRRrH+sSO+Yu+9orJEL6/E3Wo13PTnFgNU8BRrGWEhT2NCh8RCs5nbPi
-        GIanlxRtffTa3CUmlZiToSbdAfY0AX6OqezfBK3okrSd3ZnsOOaoLleHdsXrf/BaXJweI1uYGIV/
-        CmeryVFJoYMat3dbH2tOXfJjSGMfwuRp8hcAAP//AwAcTh2HowMAAA==
+    content: "{\n  \"id\": \"chatcmpl-8ethMNIZ13mUfGXLOnok6M4vsujbf\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1704757916,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": \"Ah, the eternal dance between Earth and
+      the Moon! Well, you see, it's not as simple as measuring the distance with a
+      ruler or a tape measure. No, no, no! It's more like a cosmic game of hide-and-seek.
+      Sometimes the Moon likes to play hard to get and moves a little farther away,
+      and other times it gets all cozy and snuggles up closer to Earth. So, let's
+      just say that the distance between Earth and the Moon is constantly changing,
+      keeping us on our toes! It's like a celestial tango, always in motion.\"\n      },\n
+      \     \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n
+      \ \"usage\": {\n    \"prompt_tokens\": 34,\n    \"completion_tokens\": 120,\n
+      \   \"total_tokens\": 154\n  },\n  \"system_fingerprint\": null\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 82ea2a0fbfdaef24-PDX
+      - 842859ecd8b6c3a0-SEA
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -34,20 +51,13 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 01 Dec 2023 09:04:56 GMT
+      - Mon, 08 Jan 2024 23:52:00 GMT
       Transfer-Encoding:
       - chunked
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '13293'
-      x-ratelimit-limit-tokens_usage_based:
-      - '60000'
-      x-ratelimit-remaining-tokens_usage_based:
-      - '59953'
-      x-ratelimit-reset-tokens_usage_based:
-      - 47ms
-    status:
-      code: 200
-      message: OK
+      - '4333'
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

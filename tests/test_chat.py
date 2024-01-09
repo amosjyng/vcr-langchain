@@ -1,4 +1,4 @@
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import (
     ChatPromptTemplate,
     HumanMessagePromptTemplate,
@@ -20,7 +20,7 @@ def test_chatgpt() -> None:
         ]
     )
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-    result = llm(
+    result = llm.invoke(
         chat_prompt.format_prompt(
             question="How far away is the earth from the moon?"
         ).to_messages()

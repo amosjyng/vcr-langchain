@@ -1,6 +1,6 @@
 import os
 
-from langchain.tools.playwright.utils import (
+from langchain_community.tools.playwright.utils import (
     create_async_playwright_browser,
     create_sync_playwright_browser,
 )

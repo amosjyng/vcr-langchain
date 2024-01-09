@@ -1,26 +1,51 @@
 interactions:
 - request:
-    body: '{"prompt": ["Tell me a real joke"], "model": "text-ada-001", "temperature":
-      0.7, "top_p": 1, "frequency_penalty": 0, "presence_penalty": 0, "n": 1, "logit_bias":
-      {}, "max_tokens": 256}'
-    headers: {}
+    body: '{"model": "babbage-002", "prompt": ["Tell me a real joke"], "frequency_penalty":
+      0, "logit_bias": {}, "max_tokens": 256, "n": 1, "presence_penalty": 0, "temperature":
+      0.7, "top_p": 1}'
+    headers:
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.6.1
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.4
     method: POST
     uri: https://api.openai.com/v1/completions
   response:
-    body:
-      string: !!binary |
-        H4sIAAAAAAAAA0RQTU8bMRC9768YfCbJbrqIsBduiFatqkqIohIUOfZkPeD1uPYkDUL898qbQC5z
-        eF/zZt4qAPVPp0ChVx2oO0cZBrboYYcpEwegDBZjQqMF7RR+UJ+0IKxxwwnhmw5bnV6hPYd5PW9B
-        GPSOyYKlnLZRSgJvIGPakcEpfEedAgzF6kRi7maz6LVsOA1Tjhg0TQ0PM8smzz7WEoeszktTsqWk
-        GaKfLH4Jxa/h8nmxiDfyM5ovf/bO39/eP9Tm70HN62c0UhyCe1kZHqLHknagTcJykuqguaybdt60
-        zcVIjPd/2Cba6kldN0ePYzKYVQePFQDA2zjhIC2WZViG3+4VLFkQh2AcmRcMYBLnPCKJtb0usjuG
-        HqV8rMAsDhNksng2rhpTKVjcqw7qT8RzHxOvS4Ow9f4T31Cg7FYJdeZQimThqEb2vQJ4Gttvs+5R
-        dcfWKiYeoqyEXzCUwItDmjo96sQ1V0dSWLQ/4fO2Khveq/8AAAD//wMAMRQ4ekoCAAA=
+    content: "{\n  \"id\": \"cmpl-8euIt40QFTjGgeSmUlw5dzWDRNjGP\",\n  \"object\":
+      \"text_completion\",\n  \"created\": 1704760243,\n  \"model\": \"babbage-002\",\n
+      \ \"choices\": [\n    {\n      \"text\": \". I don't know anything.\\n\\nOkay.\\n\\nUm...\\n\\nOkay,
+      let's get into it. Um, I'm trying to think of, like, is there anything that's,
+      like, not in the Bible? Like, is there anything that's not in the Bible? Like,
+      what's a good idea?\\n\\nOkay, so there's a song that my friend named Michael
+      wrote.\\n\\nOkay.\\n\\nUm, I think it's called \\\"Never Give Up,\\\" and it's
+      like, it's about a girl who, like, she's having, like, a rough day at her school,
+      and, like, she's like, \\\"I'm just gonna give up.\\\" And, like, I think it's,
+      like, really good. I think it's called \\\"Never Give Up,\\\" and it's... \u266A
+      I'm never giving up \u266A \u266A Never giving up \u266A \u266A I'm never giving
+      up \u266A \u266A Never giving up \u266A \u266A I'm never giving up \u266A \u266A
+      Never giving up \u266A \u266A I'm never giving up \u266A\\n\\nIs that a Christian
+      song? \u266A Never giving up \u266A \u266A Never giving up \u266A \u266A I'm
+      never giving up \u266A \u266A Never giving up \u266A\",\n      \"index\": 0,\n
+      \     \"logprobs\": null,\n      \"finish_reason\": \"length\"\n    }\n  ],\n
+      \ \"usage\": {\n    \"prompt_tokens\": 5,\n    \"completion_tokens\": 256,\n
+      \   \"total_tokens\": 261\n  }\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 82ea2867eb25ef10-PDX
+      - 842892c46fd0c3cb-SEA
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -30,20 +55,13 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 01 Dec 2023 09:03:36 GMT
+      - Tue, 09 Jan 2024 00:30:44 GMT
       Transfer-Encoding:
       - chunked
       openai-model:
-      - text-ada-001
+      - babbage-002
       openai-processing-ms:
-      - '412'
-      x-ratelimit-limit-tokens_usage_based:
-      - '250000'
-      x-ratelimit-remaining-tokens_usage_based:
-      - '249744'
-      x-ratelimit-reset-tokens_usage_based:
-      - 61ms
-    status:
-      code: 200
-      message: OK
+      - '736'
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1
