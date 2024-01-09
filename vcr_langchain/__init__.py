@@ -40,6 +40,12 @@ default_vcr = VCR(
         "authorization",
         "X-OpenAI-Client-User-Agent",
         "OpenAI-Organization",
+        "x-stainless-lang",
+        "x-stainless-package-version",
+        "x-stainless-os",
+        "x-stainless-arch",
+        "x-stainless-runtime",
+        "x-stainless-runtime-version",
     ],
     filter_query_parameters=["api_key"],
     before_record_response=scrub_header(
