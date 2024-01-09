@@ -31,7 +31,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "poetry"
       - name: Install dependencies
-        run: poetry install
+        # need to manually install langchain-experimental due to version conflicts
+        run: |
+          poetry install
+          poetry run pip install langchain-experimental==0.0.47
       - name: Run unit tests
         run: |
           make tests
