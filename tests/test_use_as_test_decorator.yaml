@@ -1,26 +1,52 @@
 interactions:
 - request:
-    body: '{"prompt": ["Tell me a surreal joke"], "model": "text-ada-001", "temperature":
-      0.7, "top_p": 1, "frequency_penalty": 0, "presence_penalty": 0, "n": 1, "logit_bias":
-      {}, "max_tokens": 256}'
-    headers: {}
+    body: '{"model": "babbage-002", "prompt": ["Tell me a surreal joke"], "frequency_penalty":
+      0, "logit_bias": {}, "max_tokens": 256, "n": 1, "presence_penalty": 0, "temperature":
+      0.7, "top_p": 1}'
+    headers:
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.6.1
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.4
     method: POST
     uri: https://api.openai.com/v1/completions
   response:
-    body:
-      string: !!binary |
-        H4sIAAAAAAAAA0RQTWsbQQy9769Q5xzbu2aTxnvpoVBoSKCFQAtNMOMZeVf17GjQyK5DyH8vs3bi
-        iw7vS096rQDMPyuRYm86MI8DZRjZY4ADSiaOQBk8JkFnFf0cHqgXqwgb3LIg3Nm4t/IC7RUs62UL
-        ymAPTB48ZdknLQm8hYxyIIdzuEcrEcZiHVRT7haLFKxuWcY5J4yW5o7HhWeXF+9riWM2V6Up+VLS
-        jSnMbn/qnW3jt5vj6uv3m/53fW+Xu+h+5MPDJpzUvPmLTotD8ahrx2MKWNJOtBMsJ5kOms910zar
-        2+t6Iqb7320z6+2srpuzZ2BymE0HfyoAgNdpwklaLE/xKf4aXsCTBx0Q3EBuhxGccM4TImz9lyJ7
-        ZOhRy8cKzDqgQCaPn6ZVUypFj0fTQf2BBO6T8KY0iPsQPvAtRcrDWtBmjqVIVk5mYt8qgOep/T7b
-        Hk13bm2S8Jh0rbzDWAKvT2nm8qgL16zOpLLacMGXbVU2vFX/AQAA//8DAG0QxMpKAgAA
+    content: "{\n  \"id\": \"cmpl-8euItQVN2JwnDOHSRGTOIpXV7EKii\",\n  \"object\":
+      \"text_completion\",\n  \"created\": 1704760243,\n  \"model\": \"babbage-002\",\n
+      \ \"choices\": [\n    {\n      \"text\": \". Like I'm not gonna be like, what
+      did the sandwich say to the bread?\\n\\nI don't know, I don't know.\\n\\nLike
+      that's how I'm gonna start. I'm gonna be like, I don't know. And I'll be like,
+      that's a good one.\\n\\nYou have to start with like the, the only thing that
+      I can think of is the only thing that could go wrong with a sandwich was the
+      original sandwich.\\n\\nThe original sandwich.\\n\\nThe original sandwich.\\n\\nThat's
+      a good one.\\n\\nYou know what I'm saying? So like that's how you, you know
+      what I mean? Like that's how you gotta start. If you are like--\\n\\nCan I have
+      your phone?\\n\\nThe original sandwich.\\n\\nGive me your phone.\\n\\nIf you
+      are like trying to like, you know what I mean? Like you're trying to like, you
+      know, you're trying to make a sandwich. That's how you gotta start.\\n\\nI don't
+      know if that's the way to go about it.\\n\\nYeah, I mean it's like--\\n\\nYou
+      have to start with the first three ingredients.\\n\\nI don't know, but that's
+      my, that's my, that's my thing.\\n\\nThat's the way you gotta start.\\n\\nThat's
+      the way\",\n      \"index\": 0,\n      \"logprobs\": null,\n      \"finish_reason\":
+      \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"completion_tokens\":
+      256,\n    \"total_tokens\": 261\n  }\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 82ea02345c5c5ee6-PDX
+      - 842892bd7eb4c3c8-SEA
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -30,20 +56,13 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 01 Dec 2023 08:37:31 GMT
+      - Tue, 09 Jan 2024 00:30:43 GMT
       Transfer-Encoding:
       - chunked
       openai-model:
-      - text-ada-001
+      - babbage-002
       openai-processing-ms:
-      - '175'
-      x-ratelimit-limit-tokens_usage_based:
-      - '250000'
-      x-ratelimit-remaining-tokens_usage_based:
-      - '249744'
-      x-ratelimit-reset-tokens_usage_based:
-      - 61ms
-    status:
-      code: 200
-      message: OK
+      - '860'
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1
