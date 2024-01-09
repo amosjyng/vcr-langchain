@@ -1,9 +1,11 @@
-from langchain_openai import ChatOpenAI
+from typing import cast
+
 from langchain.prompts.chat import (
     ChatPromptTemplate,
     HumanMessagePromptTemplate,
     SystemMessagePromptTemplate,
 )
+from langchain_openai import ChatOpenAI
 
 import vcr_langchain as vcr
 
@@ -20,10 +22,13 @@ def test_chatgpt() -> None:
         ]
     )
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-    result = llm.invoke(
-        chat_prompt.format_prompt(
-            question="How far away is the earth from the moon?"
-        ).to_messages()
-    ).content
+    result: str = cast(
+        str,
+        llm.invoke(
+            chat_prompt.format_prompt(
+                question="How far away is the earth from the moon?"
+            ).to_messages()
+        ).content,
+    )
     print(result)
     assert result.endswith("always in motion.")

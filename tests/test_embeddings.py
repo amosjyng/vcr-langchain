@@ -1,6 +1,6 @@
-from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores.faiss import FAISS
+from langchain_openai import OpenAIEmbeddings
 from tiktoken_ext.openai_public import cl100k_base
 
 import vcr_langchain as vcr
